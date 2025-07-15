@@ -4,7 +4,7 @@ import Footer from './Footer';
 import Navbar from '../components/Navbar';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
+import Link from 'next/link';
 
 export default function Homepage() {
 
@@ -373,11 +373,13 @@ export default function Homepage() {
               <h4><i class="ri-check-line"></i>3 Classes Per Week</h4>
               <h4><i class="ri-check-line"></i>No Joining Fees</h4>
             </div>
-            <button>JOIN NOW</button>
+            <Link href='/contact'>
+              <button >JOIN NOW</button>
+            </Link>
           </div>
           <div className={`${styles.card} ${styles.featured}`}>
             <div className={styles.planDetails}>
-              <h2>Plan 2</h2>
+              <h2>Plan 3</h2>
               <img src='/plan2.webp' alt='plan1' />
               <h3>Half Yearly</h3>
             </div>
@@ -386,11 +388,13 @@ export default function Homepage() {
               <h4><i class="ri-check-line"></i>3 Classes Per Week</h4>
               <h4><i class="ri-check-line"></i>No Joining Fees</h4>
             </div>
-            <button>JOIN NOW</button>
+            <Link href='/contact'>
+              <button >JOIN NOW</button>
+            </Link>
           </div>
           <div className={styles.card}>
             <div className={styles.planDetails}>
-              <h2>Plan 3</h2>
+              <h2>Plan 2</h2>
               <img src='/plan2.webp' alt='plan1' />
               <h3>Quaterly</h3>
             </div>
@@ -399,7 +403,9 @@ export default function Homepage() {
               <h4><i class="ri-check-line"></i>3 Classes Per Week</h4>
               <h4><i class="ri-check-line"></i>No Joining Fees</h4>
             </div>
-            <button>JOIN NOW</button>
+            <Link href='/contact'>
+              <button >JOIN NOW</button>
+            </Link>
           </div>
         </div>
         <Footer />
