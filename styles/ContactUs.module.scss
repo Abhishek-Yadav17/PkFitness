@@ -1,0 +1,404 @@
+.contactPage {
+  min-height: 100vh;
+  background: #111;
+  color: white;
+  font-family: NoiTesk;
+
+  .aboutUs {
+    min-height: 100vh;
+    width: 100%;
+    padding: 3vw 6vw;
+
+    .aboutUsIn {
+      height: 95vh;
+      width: 100%;
+
+      h1 {
+        font-size: 3.5vw;
+        color: #F2FFC4;
+        margin-bottom: 4vw;
+        width: 50%;
+      }
+
+      .introBlock {
+        display: flex;
+        flex-direction: column;
+        gap: 7vw;
+
+        .leftPara,
+        .rightPara {
+          display: flex;
+          align-items: flex-start;
+          overflow: hidden;
+
+          .box {
+            width: 1vw;
+            height: 1.1vw;
+            background-color: #c6ff4f;
+            transform: skew(-20deg);
+            margin-right: 0.5vw;
+          }
+
+          p {
+            font-size: 1.2vw;
+            line-height: 1.7;
+            width: 43%;
+
+            span {
+              display: inline-block;
+            }
+          }
+        }
+
+        .leftPara {
+          justify-content: flex-end;
+
+          p {
+            text-align: right;
+          }
+        }
+
+        .rightPara {
+          justify-content: flex-start;
+
+          .box {
+            margin-left: 0.5vw;
+            margin-right: 0;
+          }
+
+          p {
+            text-align: left;
+            margin-left: 1.5vw;
+          }
+        }
+      }
+    }
+
+    .aboutList {
+      min-height: fit-content;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+
+      h1 {
+        font-size: 3.5vw;
+        color: #F2FFC4;
+      }
+
+      .curvedArrow {
+        width: 20vw;
+        position: absolute;
+        top: 35%;
+        left: 10%;
+        transform: rotate(20deg);
+
+        .arrowPath {
+          fill: none;
+          stroke: #C6FF4F;
+          stroke-width: 2;
+        }
+      }
+
+      .featuresList {
+        position: relative;
+        list-style: none;
+        padding: 0;
+        max-width: 50%;
+        align-self: flex-end;
+        margin-right: 4vw;
+
+        li {
+          margin-bottom: 1.6vw;
+          padding: 1.2vw 2vw;
+          background-color: #1c1c1c;
+          border-left: 4px solid #c6ff4f;
+          border-radius: 0.5vw;
+          font-size: 1vw;
+          text-align: left;
+          color: #ccc;
+          transition: all 0.3s ease;
+
+          &:hover {
+            background-color: #222;
+            color: #fff;
+          }
+        }
+      }
+    }
+
+    .aboutDetails {
+      min-height: fit-content;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      margin-top: 5vw;
+      gap: 6vw;
+
+      h1 {
+        font-size: 3.5vw;
+        color: #F2FFC4;
+        position: relative;
+        align-self: flex-end;
+      }
+
+      .differenceContent {
+        display: flex;
+        gap: 4vw;
+        justify-content: center;
+        flex-wrap: wrap;
+
+        .point {
+          background: #1c1c1c;
+          padding: 2vw;
+          border-radius: 0.7vw;
+          border-left: 4px solid #c6ff4f;
+          max-width: 40%;
+          font-size: 1vw;
+          color: #ccc;
+          transition: all 0.3s ease;
+
+          &:hover {
+            background: #222;
+            color: #fff;
+          }
+
+          p {
+            font-size: 1.1vw;
+            margin: 0;
+            line-height: 1.7;
+          }
+        }
+      }
+
+      .tagline {
+        font-size: 1.2vw;
+        font-style: italic;
+        align-self: center;
+        color: #c6ff4f;
+      }
+    }
+  }
+
+  .contactContainer {
+    height: fit-content;
+    width: 100%;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 3vw 6vw;
+
+    >h1 {
+      font-size: 3.5vw;
+      color: #F2FFC4;
+      margin-bottom: 3vw;
+      width: 60%;
+    }
+
+    .blueBoxes {
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+
+      p {
+        font-size: 1.2vw;
+        position: relative;
+        margin-left: 1vw;
+      }
+
+      .box {
+        width: 1vw;
+        height: 1.1vw;
+        background-color: #c6ff4f;
+        transform: skew(-20deg);
+        margin-right: 0.5vw;
+      }
+    }
+  }
+
+  .contactForm {
+    height: 85vh;
+    width: 100%;
+    margin-top: 6vw;
+    border-top: 1px solid #2f2e2e;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 2vw;
+
+    .formLeft {
+      height: 100%;
+      width: 40%;
+
+      .formLeftTop {
+        height: 25%;
+        width: 100%;
+
+        h1 {
+          font-size: 2vw;
+          margin-bottom: 2vw;
+        }
+
+        h4 {
+          font-weight: lighter;
+          color: #f2eded;
+          width: 95%;
+        }
+      }
+
+      .formLeftMid {
+        height: 25%;
+        width: 100%;
+        padding-top: 1vw;
+
+        h5 {
+          font-size: 1vw;
+          margin-bottom: 1vw;
+        }
+
+        .socialIcons {
+          display: flex;
+          gap: 0.8vw;
+
+          div {
+            width: 2.5vw;
+            height: 2.5vw;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(145deg, #c6ff4f, #679a02);
+            border-radius: 0.3vw;
+            font-size: 1.2vw;
+            cursor: pointer;
+          }
+        }
+      }
+
+      .formLeftBottom {
+        height: 50%;
+        width: 80%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+
+        .infoBox {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 1.1vw;
+          border-radius: 0.5vw;
+          cursor: pointer;
+          transition: all ease 0.5s;
+          border: 1px solid #c7ff4f34;
+          background-color: transparent;
+
+          p {
+            font-size: 0.9vw;
+            font-weight: 500;
+            margin-bottom: 0.3vw;
+            color: gray;
+          }
+
+          span {
+            font-size: 1vw;
+          }
+
+          i {
+            font-size: 1.2vw;
+            color: #fff;
+          }
+
+          &:hover {
+            background-color: #c6ff4f;
+            color: #000;
+          }
+
+          &:hover i {
+            color: #000;
+          }
+        }
+      }
+
+    }
+
+    .formRight {
+      width: 50%;
+      height: 100%;
+      box-shadow: 0 0 15px rgba(199, 255, 79, 0.074);
+      padding: 2vw;
+      border-radius: 0.5vw;
+
+      .form {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100%;
+
+        .row {
+          display: flex;
+          gap: 1vw;
+
+          .inputGroup {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+          }
+        }
+
+        .inputGroup {
+          display: flex;
+          flex-direction: column;
+
+          label {
+            color: #fff;
+            font-size: 0.9vw;
+            font-weight: bold;
+            margin-bottom: 0.7vw;
+          }
+
+          input,
+          textarea {
+            background: #111111;
+            color: #fff;
+            border: 1px solid #1B1B1D;
+            padding: 0.8vw;
+            border-radius: 0.4vw;
+            font-size: 0.9vw;
+            font-family: NoiTesk;
+          }
+
+          input:focus,
+          textarea:focus {
+            border-color: #C7FF4F;
+            outline: none;
+          }
+
+          textarea {
+            height: 7vw;
+            resize: none;
+          }
+        }
+
+        button {
+          width: 40%;
+          align-self: center;
+          background: linear-gradient(145deg, #c6ff4f, #679a02);
+          color: #fff;
+          padding: 1vw;
+          border: none;
+          border-radius: 0.4vw;
+          font-size: 1vw;
+          cursor: pointer;
+          transition: all 0.3s ease;
+
+          &:hover {
+            box-shadow: 0 2px 12px rgba(173, 255, 47, 0.5);
+          }
+        }
+      }
+    }
+
+  }
+}
