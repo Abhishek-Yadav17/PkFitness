@@ -170,8 +170,8 @@ export default function Homepage() {
         <Navbar />
         <div className={styles.hero}>
           <div className={styles.tagline} data-scroll data-scroll-speed="4">
-            <h1><span>Your Goals Aren't Out of Reach—</span><br />
-              <span>You Just Haven't Trained Here Yet.</span><br />
+            <h1><span>Your Goals Aren&apos;t Out of Reach—</span><br />
+              <span>You Just Haven&apos;t Trained Here Yet.</span><br />
               <span>This is Where Your Stronger Self Begins.</span>
             </h1>
             <p>
@@ -195,7 +195,7 @@ export default function Homepage() {
             <div className={styles.detailsInner} data-scroll data-scroll-speed="4">
               <h2>💻 Online Coaching (Remote)</h2>
               <h4>Perfect for busy professionals and remote workers.</h4>
-              <h5>If you're tied to a desk or have a packed schedule, we've got your back. Our online coaching is flexible, structured, and tailored just for you.</h5>
+              <h5>If you&apos;re tied to a desk or have a packed schedule, we&apos;ve got your back. Our online coaching is flexible, structured, and tailored just for you.</h5>
               <ul>
                 <li><i class="ri-checkbox-circle-line"></i>Weekly workout plans that evolve with your progress</li>
                 <li><i class="ri-checkbox-circle-line"></i>1-on-1 check-ins to keep you on track</li>
@@ -208,13 +208,13 @@ export default function Homepage() {
             <span className={styles.imageLabel} data-scroll data-scroll-speed="2">02</span>
             <div className={styles.detailsInner} data-scroll data-scroll-speed="4">
               <h2>🏋‍♂ Offline Personal Training (We Come to You)</h2>
-              <h4>Don't want to switch gyms? No problem.</h4>
-              <h5>Whether you're already training somewhere or need help picking the right place—we'll meet you where you are.</h5>
+              <h4>Don&apos;t want to switch gyms? No problem.</h4>
+              <h5>Whether you&apos;re already training somewhere or need help picking the right place—we&apos;ll meet you where you are.</h5>
               <ul>
                 <li><i class="ri-checkbox-circle-line"></i>Personalized sessions at your gym or one nearby.</li>
                 <li><i class="ri-checkbox-circle-line"></i>Flexible plans: 2, 3, or 5 sessions a week.</li>
                 <li><i class="ri-checkbox-circle-line"></i>Face-to-face coaching + full nutrition support.</li>
-                <li><i class="ri-checkbox-circle-line"></i>You show up—we'll handle the rest.</li>
+                <li><i class="ri-checkbox-circle-line"></i>You show up—we&apos;ll handle the rest.</li>
               </ul>
             </div>
             <img src='/about2.jpg' alt='details' />
@@ -225,7 +225,7 @@ export default function Homepage() {
             <div className={styles.detailsInner} data-scroll data-scroll-speed="4">
               <h2>💪 Bodybuilding Prep (Stage-Ready Coaching)</h2>
               <h4>From first-timers to seasoned athletes—this is your spotlight.</h4>
-              <h5>Getting stage-ready isn't just about lifting—it's about strategy, structure, and confidence. We'll help you build the body and the mindset.</h5>
+              <h5>Getting stage-ready isn&apos;t just about lifting—it&apos;s about strategy, structure, and confidence. We&apos;ll help you build the body and the mindset.</h5>
               <ul>
                 <li><i class="ri-checkbox-circle-line"></i>Full prep coaching: workouts, diet, posing, and peak week.</li>
                 <li><i class="ri-checkbox-circle-line"></i>Online and offline options for every lifestyle.</li>
@@ -255,7 +255,7 @@ export default function Homepage() {
             <div className={styles.detailsInner} data-scroll data-scroll-speed="4">
               <h2>🥗 Nutrition Guidance (Included in All Plans)</h2>
               <h4>No crash diets, no cookie-cutter meal plans. Just food that fits your life.</h4>
-              <h5>We'll help you eat better—not less—with plans designed around your preferences, goals, and lifestyle.</h5>
+              <h5>We&apos;ll help you eat better—not less—with plans designed around your preferences, goals, and lifestyle.</h5>
               <ul>
                 <li><i class="ri-checkbox-circle-line"></i>Flexible meal plans tailored to you.</li>
                 <li><i class="ri-checkbox-circle-line"></i>Ongoing tweaks based on your progress.</li>
@@ -266,9 +266,9 @@ export default function Homepage() {
         </div>
         <div className={styles.getStarted}>
           <div className={styles.left}>
-            <h2>🔥Let's Get You Started</h2>
-            <h2>You don't need to be “fit” to start—you just need to start.</h2>
-            <h2>At PK Fitness and Nutrition, we're here to support your journey, your way.</h2>
+            <h2>🔥Let&apos;s Get You Started</h2>
+            <h2>You don&apos;t need to be “fit” to start—you just need to start.</h2>
+            <h2>At PK Fitness and Nutrition, we&apos;re here to support your journey, your way.</h2>
           </div>
           <div className={styles.arrowWrapper}>
             <svg viewBox="0 0 200 100" className={styles.curvedArrow}>
@@ -282,7 +282,7 @@ export default function Homepage() {
           </div>
           <div className={styles.right}>
             <h3>📲 Book a free consultation today</h3>
-            <h3>Let's build a plan that fits you—not the other way around.</h3>
+            <h3>Let&apos;s build a plan that fits you—not the other way around.</h3>
           </div>
         </div>
       </section>

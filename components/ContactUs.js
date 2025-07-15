@@ -264,8 +264,8 @@ export default function ContactUs() {
                 <div key={i} className={styles.box}></div>
               ))}
               <p className={styles.left}>
-                <span>At PK Fitness and Nutrition, we're not here to just give you a workout plan and disappear.</span>
-                <span>We're here to walk with you—step by step—on your fitness journey, no matter where you're starting from.</span>
+                <span>At PK Fitness and Nutrition, we&apos;re not here to just give you a workout plan and disappear.</span>
+                <span>We&apos;re here to walk with you—step by step—on your fitness journey, no matter where you&apos;re starting from.</span>
               </p>
             </div>
 
@@ -275,7 +275,7 @@ export default function ContactUs() {
               ))}
               <p className={styles.right}>
                 <span>We know how tough it can be to balance work, family, and everything else life throws at you.</span>
-                <span>That's why we focus on realistic, personalized fitness and nutrition coaching that fits your life—not the other way around.</span>
+                <span>That&apos;s why we focus on realistic, personalized fitness and nutrition coaching that fits your life—not the other way around.</span>
               </p>
             </div>
           </div>
@@ -294,7 +294,7 @@ export default function ContactUs() {
             <li>Working professionals who are strapped for time but still want to feel strong and healthy</li>
             <li>Beginners who are just starting out and need a little extra guidance and support</li>
             <li>Bodybuilders and athletes preparing to bring their best to the stage</li>
-            <li>Anyone who's tired of fad diets, extreme routines, or fitness fluff</li>
+            <li>Anyone who&apos;s tired of fad diets, extreme routines, or fitness fluff</li>
           </ul>
         </div>
         <div className={styles.aboutDetails}>
@@ -303,7 +303,7 @@ export default function ContactUs() {
             <div className={styles.point}>
               <p>
                 We actually listen. We ask the right questions, learn about your lifestyle, goals, and struggles,
-                and then build a plan that's realistic, flexible, and made just for you.
+                and then build a plan that&apos;s realistic, flexible, and made just for you.
                 No copy-paste routines. No pressure. Just progress—at your pace.
               </p>
             </div>
@@ -311,12 +311,12 @@ export default function ContactUs() {
               <p>
                 We believe that fitness should feel empowering, not exhausting.
                 Whether you train at home, at a local gym, or need help with food choices—
-                we're right beside you, cheering you on.
+                we&apos;re right beside you, cheering you on.
               </p>
             </div>
           </div>
           <p className={styles.tagline}>
-            Because at the end of the day, it's not just about the body you build—it's about how you feel doing it.
+            Because at the end of the day, it&apos;s not just about the body you build—it&apos;s about how you feel doing it.
           </p>
         </div>
       </div>
@@ -326,7 +326,7 @@ export default function ContactUs() {
           {[...Array(5)].map((_, i) => (
             <div key={i} className={styles.box}></div>
           ))}
-          <p>Whether you're ready to dive in or just want to understand your options, we're just a call or message away.</p>
+          <p>Whether you&apos;re ready to dive in or just want to understand your options, we&apos;re just a call or message away.</p>
         </div>
         <div className={styles.contactForm}>
           <div className={styles.formLeft}>
