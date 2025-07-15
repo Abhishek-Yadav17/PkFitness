@@ -1,5 +1,5 @@
 import styles from '../styles/Homepage.module.scss';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import Footer from './Footer';
 import Navbar from '../components/Navbar';
 import gsap from 'gsap';
@@ -11,6 +11,7 @@ export default function Homepage() {
   const images = ['/bg1.jpg', '/bg2.jpg', '/bg3.jpg', '/bg4.jpg', '/bg5.jpg'];
 
   const [bgIndex, setBgIndex] = useState(0);
+  const locoScrollRef = useRef(null);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -30,6 +31,8 @@ export default function Homepage() {
         el: scrollEl,
         smooth: true,
       });
+
+      locoScrollRef.current = locoScroll;
 
       ScrollTrigger.scrollerProxy(scrollEl, {
         scrollTop(value) {
@@ -228,13 +231,17 @@ export default function Homepage() {
           },
         }
       );
+
+      return () => {
+        if (locoScrollRef.current) locoScrollRef.current.destroy();
+      };
     });
   }, []);
 
   return (
     <>
       <section className={styles.homepage} data-scroll-section style={{ backgroundImage: `url(${images[bgIndex]})` }}>
-        <Navbar />
+        <Navbar locoScroll={locoScrollRef.current}/>
         <div className={styles.hero}>
           <div className={styles.tagline} data-scroll data-scroll-speed="4">
             <h1><span>Your Goals Aren&apos;t Out of Reach—</span><br />
@@ -254,7 +261,7 @@ export default function Homepage() {
           <h1>PK FITNESS</h1>
           <h1>& NUTRITION</h1>
         </div>
-        <div className={styles.aboutDetails}>
+        <div id="services" className={styles.aboutDetails}>
           <div className={styles.details}>
             <img src='/about1.jpg' alt='details' />
             <span className={styles.imageLabel} data-scroll data-scroll-speed="2">01</span>

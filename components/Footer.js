@@ -25,7 +25,9 @@ export default function Footer() {
               <h4>Contact Us</h4>
             </Link>
             <h4>Services</h4>
-            <h4>Testimonials</h4>
+            <Link href="/aboutus">
+              <h4>About Us</h4>
+            </Link>
           </div>
           <div className={styles.socialMedia}>
             <h2>Socail Media</h2>
