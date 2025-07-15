@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>PK Fitness</title>
+        <title>PK Fitness & Nutrition</title>
       </Head>
       <main data-scroll-container style={{ height: '100%', overflow: 'hidden' }}>
         <div className="animate">
