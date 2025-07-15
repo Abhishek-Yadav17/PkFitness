@@ -161,6 +161,73 @@ export default function Homepage() {
         }
       );
 
+      gsap.fromTo(
+        `.${styles.servicesSection}>h1`,
+        { y: 100, scale: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          scale: 1,
+          scrollTrigger: {
+            trigger: `.${styles.servicesSection}`,
+            scroller: scrollEl,
+            start: 'top 160%',
+            end: 'bottom 50%',
+            scrub: 2,
+          },
+        }
+      );
+
+      gsap.fromTo(
+        `.${styles.card}:nth-child(1)`,
+        { x: -200, opacity: 0 },
+        {
+          x: 0,
+          opacity: 1,
+          duration: 1,
+          scrollTrigger: {
+            trigger: `.${styles.servicesSection}`,
+            scroller: scrollEl,
+            start: 'top 200%',
+            end: 'bottom 100%',
+            scrub: 1,
+          },
+        }
+      );
+
+      gsap.fromTo(
+        `.${styles.featured}`,
+        { scale: 0.2, opacity: 0 },
+        {
+          scale: 1.1,
+          opacity: 1,
+          duration: 1,
+          scrollTrigger: {
+            trigger: `.${styles.servicesSection}`,
+            scroller: scrollEl,
+            start: 'top 200%',
+            end: 'bottom 100%',
+            scrub: 1,
+          },
+        }
+      );
+
+      gsap.fromTo(
+        `.${styles.card}:nth-child(3)`,
+        { x: 200, opacity: 0 },
+        {
+          x: 0,
+          opacity: 1,
+          duration: 1,
+          scrollTrigger: {
+            trigger: `.${styles.servicesSection}`,
+            scroller: scrollEl,
+            start: 'top 200%',
+            end: 'bottom 100%',
+            scrub: 1,
+          },
+        }
+      );
     });
   }, []);
 
@@ -181,7 +248,6 @@ export default function Homepage() {
           </div>
         </div>
       </section>
-
       <section className={styles.aboutSection} data-scroll-section>
         <div className={styles.rotated}>
           <h1>MORE ABOUT</h1>
@@ -286,7 +352,6 @@ export default function Homepage() {
           </div>
         </div>
       </section>
-
       <section className={styles.servicesSection} data-scroll-section>
         <h1>MEMBERSHIPS</h1>
         <div className={styles.plans}>
@@ -294,7 +359,7 @@ export default function Homepage() {
             <div className={styles.planDetails}>
               <h2>Plan 1</h2>
               <img src='/plan2.webp' alt='plan1' />
-              <h2><span>$200</span> / month</h2>
+              <h3>Monthly</h3>
             </div>
             <div className={styles.planList}>
               <h4><i class="ri-check-line"></i>12 Classes Per Month</h4>
@@ -307,7 +372,7 @@ export default function Homepage() {
             <div className={styles.planDetails}>
               <h2>Plan 2</h2>
               <img src='/plan2.webp' alt='plan1' />
-              <h2><span>$200</span> / month</h2>
+              <h3>Half Yearly</h3>
             </div>
             <div className={styles.planList}>
               <h4><i class="ri-check-line"></i>12 Classes Per Month</h4>
@@ -320,7 +385,7 @@ export default function Homepage() {
             <div className={styles.planDetails}>
               <h2>Plan 3</h2>
               <img src='/plan2.webp' alt='plan1' />
-              <h2><span>$200</span> / month</h2>
+              <h3>Quaterly</h3>
             </div>
             <div className={styles.planList}>
               <h4><i class="ri-check-line"></i>12 Classes Per Month</h4>
