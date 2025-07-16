@@ -87,6 +87,42 @@ export default function ContactUs() {
                 }
             );
 
+            ['leftPara', 'rightPara'].forEach((section) => {
+                const container = document.querySelector(`.${styles[section]}`);
+                const img = container?.querySelector('img');
+
+                if (!container || !img) return;
+
+                container.addEventListener('mouseenter', () => {
+                    gsap.to(img, {
+                        scale: 1,
+                        opacity: 1,
+                        duration: 0.5,
+                        ease: 'power3.out',
+                    });
+                });
+
+                container.addEventListener('mouseleave', () => {
+                    gsap.to(img, {
+                        x: 0,
+                        y: 0,
+                        duration: 0.5,
+                        ease: 'power3.inOut',
+                    });
+                });
+                container.addEventListener('mousemove', (e) => {
+                    const rect = container.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    gsap.to(img, {
+                        x: x - rect.width / 2,
+                        y: y - rect.height / 2,
+                        duration: 0.3,
+                        ease: 'power2.out',
+                    });
+                });
+            });
+
             gsap.fromTo(
                 `.${styles.aboutList} h1`,
                 { y: 100, opacity: 0 },
@@ -193,6 +229,7 @@ export default function ContactUs() {
                                 <span>At PK Fitness and Nutrition, we&apos;re not here to just give you a workout plan and disappear.</span>
                                 <span>We&apos;re here to walk with you—step by step—on your fitness journey, no matter where you&apos;re starting from.</span>
                             </p>
+                            <img src='left.jpg' alt='leftPara'></img>
                         </div>
 
                         <div className={styles.rightPara}>
@@ -203,6 +240,7 @@ export default function ContactUs() {
                                 <span>We know how tough it can be to balance work, family, and everything else life throws at you.</span>
                                 <span>That&apos;s why we focus on realistic, personalized fitness and nutrition coaching that fits your life—not the other way around.</span>
                             </p>
+                            <img src='right.jpg' alt='rightPara'></img>
                         </div>
                     </div>
                 </div>
