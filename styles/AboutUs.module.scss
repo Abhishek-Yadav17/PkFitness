@@ -201,5 +201,72 @@
                 margin-bottom: 4vw;
             }
         }
+
+        .foundersSection {
+            height: fit-content;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            .founders {
+                margin: 2vw auto;
+                background-color: #1c1c1c;
+                padding: 4vw;
+                border-radius: 1vw;
+                height: fit-content;
+                max-width: 80%;
+                display: flex;
+                flex-direction: column;
+                gap: 4vw;
+
+                h1 {
+                    font-size: 4vw;
+                    color: #F2FFC4;
+                    align-self: center;
+                    position: relative;
+                    z-index: 1;
+
+                    &::after {
+                        content: 'FOUNDERS';
+                        position: absolute;
+                        height: 100%;
+                        width: 100%;
+                        top: -70%;
+                        font-weight: bold;
+                        left: 5%;
+                        color: #444;
+                        font-size: 6vw;
+                        z-index: -1;
+                    }
+                }
+
+                p {
+                    font-size: 1.2vw;
+                    color: #ccc;
+                    line-height: 1.7;
+                    text-align: center;
+
+                    strong {
+                        color: #c6ff4f;
+                    }
+                }
+            }
+
+            .highlight {
+                font-size: 1.2vw;
+                margin: 2vw 0;
+                overflow: hidden;
+
+                strong {
+                    color: #c6ff4f;
+                    font-style: italic;
+
+                    &:nth-child(1) {
+                        font-style: normal;
+                    }
+                }
+            }
+        }
     }
 }

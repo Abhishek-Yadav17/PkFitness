@@ -211,6 +211,40 @@ export default function ContactUs() {
                     },
                 }
             );
+
+            gsap.fromTo(
+                `.${styles.foundersSection} h1`,
+                { y: 100, opacity: 0 },
+                {
+                    y: 0,
+                    opacity: 1,
+                    duration: 1,
+                    ease: 'power3.out',
+                    scrollTrigger: {
+                        trigger: `.${styles.foundersSection}`,
+                        scroller: scrollEl,
+                        start: 'top 100%',
+                        scrub: 0.5
+                    },
+                }
+            );
+
+            gsap.fromTo(
+                `.${styles.highlight}`,
+                { y: 100, opacity: 0 },
+                {
+                    y: 0,
+                    opacity: 1,
+                    duration: 1,
+                    ease: 'power3.out',
+                    scrollTrigger: {
+                        trigger: `.${styles.foundersSection}`,
+                        scroller: scrollEl,
+                        start: 'top 20%',
+                        scrub: 0.5
+                    },
+                }
+            );
         });
     }, []);
 
@@ -281,6 +315,23 @@ export default function ContactUs() {
                     </div>
                     <p className={styles.tagline}>
                         Because at the end of the day, it&apos;s not just about the body you build—it&apos;s about how you feel doing it.
+                    </p>
+                </div>
+                <div className={styles.foundersSection}>
+                    <div className={styles.founders} data-scroll data-scroll-speed='1'>
+                        <h1>Meet the Founders</h1>
+                        <p>
+                            PK Fitness & Nutritions was founded by <strong>Pratik Birajdar</strong> and <strong>Kiran Kangude</strong>, two dedicated professionals with over a decade of combined experience in the fitness and nutrition industry. Backed by official certifications and a passion for health, both founders bring a science-based, result-driven approach to every client they work with.
+                        </p>
+                        <p>
+                            At PK Fitness & Nutritions, our entire team is made up of <strong>certified experts</strong> who are <strong>committed to guiding individuals</strong> on their unique wellness journeys.
+                            From <strong>fat loss</strong> and <strong>muscle gain</strong> to <strong>performance enhancement</strong> and <strong>overall well-being</strong>, we create
+                            <strong>customized plans</strong> tailored to each client&apos;s <strong>body</strong>, <strong>goals</strong>, and <strong>lifestyle</strong>.
+                        </p>
+
+                    </div>
+                    <p className={styles.highlight}>
+                        <strong>PK Fitness & Nutritions</strong> stands for <strong>quality</strong>, <strong>integrity</strong>, and <strong>long-term transformation</strong>.
                     </p>
                 </div>
             </div>
