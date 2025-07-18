@@ -375,6 +375,10 @@
             transform: scale(1.1);
             background: linear-gradient(to right bottom, #FA8E4B, #EC466F);
             box-shadow: 0 4px 20px rgba(255, 0, 51, 0.43);
+
+            button {
+                background: linear-gradient(to right bottom, #f59b63, #d0093b);
+            }
         }
     }
 }

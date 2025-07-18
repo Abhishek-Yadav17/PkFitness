@@ -259,7 +259,7 @@ export default function Homepage() {
         <div className={styles.rotated}>
           <h1>MORE ABOUT</h1>
           <h1>PK FITNESS</h1>
-          <h1>& NUTRITION</h1>
+          <h1>& NUTRITIONS</h1>
         </div>
         <div id="services" className={styles.aboutDetails}>
           <div className={styles.details}>
@@ -341,7 +341,7 @@ export default function Homepage() {
           <div className={styles.left}>
             <h2>🔥Let&apos;s Get You Started</h2>
             <h2>You don&apos;t need to be “fit” to start—you just need to start.</h2>
-            <h2>At PK Fitness and Nutrition, we&apos;re here to support your journey, your way.</h2>
+            <h2>At PK Fitness and Nutritions, we&apos;re here to support your journey, your way.</h2>
           </div>
           <div className={styles.arrowWrapper}>
             <svg viewBox="0 0 200 100" className={styles.curvedArrow}>

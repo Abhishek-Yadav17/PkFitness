@@ -6,7 +6,7 @@ export default function Footer() {
     <footer className={styles.footer}>
       <div className={styles.footerContent}>
         <div className={styles.footerLeft}>
-          <h1>PK Fitness & Nutrition</h1>
+          <h1>PK Fitness & Nutritions</h1>
           <div className={styles.address}>
             <h5><i class="ri-map-pin-2-fill"></i>Pune, India</h5>
           </div>

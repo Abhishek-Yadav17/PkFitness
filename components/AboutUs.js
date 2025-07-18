@@ -226,7 +226,7 @@ export default function ContactUs() {
                                 <div key={i} className={styles.box}></div>
                             ))}
                             <p className={styles.left}>
-                                <span>At PK Fitness and Nutrition, we&apos;re not here to just give you a workout plan and disappear.</span>
+                                <span>At PK Fitness and Nutritions, we&apos;re not here to just give you a workout plan and disappear.</span>
                                 <span>We&apos;re here to walk with you—step by step—on your fitness journey, no matter where you&apos;re starting from.</span>
                             </p>
                             <img src='left.jpg' alt='leftPara'></img>

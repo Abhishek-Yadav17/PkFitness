@@ -116,21 +116,21 @@ export default function ContactUs() {
               <div className={styles.infoBox}>
                 <div>
                   <p>You can email us here</p>
-                  <span>info@example.com</span>
+                  <span>info@pkfitnessandnutritions.com</span>
                 </div>
                 <i class="ri-arrow-right-up-line"></i>
               </div>
               <div className={styles.infoBox}>
                 <div>
                   <p>Give us a call on</p>
-                  <span>+91 88900 99108</span>
+                  <span>+91 9284003863</span>
                 </div>
                 <i class="ri-arrow-right-up-line"></i>
               </div>
               <div className={styles.infoBox}>
                 <div>
                   <p>Our office hours</p>
-                  <span>Mon-Fri, 9am-5pm</span>
+                  <span>Mon-Fri, 6am-6pm</span>
                 </div>
                 <i class="ri-arrow-right-up-line"></i>
               </div>

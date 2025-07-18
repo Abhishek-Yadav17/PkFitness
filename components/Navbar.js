@@ -35,7 +35,7 @@ export default function Navbar({ locoScroll }) {
 
   return (
     <nav className={styles.nav}>
-      <h1>PK Fitness & Nutrition</h1>
+      <h1>PK Fitness & Nutritions</h1>
       <div className={styles.navmid}>
         <Link href="/" passHref>
           <h4 data-text="Homepage">Homepage</h4>
