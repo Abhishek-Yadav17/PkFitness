@@ -241,7 +241,7 @@ export default function Homepage() {
   return (
     <>
       <section className={styles.homepage} data-scroll-section style={{ backgroundImage: `url(${images[bgIndex]})` }}>
-        <Navbar locoScroll={locoScrollRef.current}/>
+        <Navbar locoScroll={locoScrollRef.current} />
         <div className={styles.hero}>
           <div className={styles.tagline} data-scroll data-scroll-speed="4">
             <h1><span>Your Goals Aren&apos;t Out of Reach—</span><br />
@@ -251,7 +251,9 @@ export default function Homepage() {
             <p>
               <span>At PK Fitness, we go beyond the basics. Experience personalized</span> <span>training programs, state-of-the-art equipment, and a supportive</span> <span>community committed to real, lasting results.</span>
             </p>
-            <button>Start your journey today.</button>
+            <Link href="/contact">
+              <button>Start your journey today.</button>
+            </Link>
           </div>
         </div>
       </section>
