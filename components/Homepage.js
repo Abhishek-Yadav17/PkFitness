@@ -30,6 +30,12 @@ export default function Homepage() {
       const locoScroll = new LocomotiveScroll({
         el: scrollEl,
         smooth: true,
+        smartphone: {
+          smooth: false
+        },
+        tablet: {
+          smooth: false
+        }
       });
 
       locoScrollRef.current = locoScroll;
