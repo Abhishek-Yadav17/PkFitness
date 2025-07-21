@@ -10,14 +10,25 @@
         padding: 3vw 6vw;
 
         .aboutUsIn {
-            height: 95vh;
+            height: fit-content;
             width: 100%;
+
+            @media (max-width: 416px) {
+                margin-bottom: 20vw;
+            }
 
             h1 {
                 font-size: 3.5vw;
                 color: #F2FFC4;
                 margin-bottom: 7vw;
                 width: 50%;
+
+                @media (max-width: 416px) {
+                    font-size: 7.1vw;
+                    width: 100%;
+                    line-height: 10vw;
+                    margin-bottom: 18vw;
+                }
             }
 
             .introBlock {
@@ -25,11 +36,14 @@
                 flex-direction: column;
                 gap: 8vw;
 
+                @media (max-width: 416px) {
+                    gap: 18vw;
+                }
+
                 .leftPara,
                 .rightPara {
                     display: flex;
                     align-items: flex-start;
-                    // overflow: hidden;
                     position: relative;
 
                     .box {
@@ -38,12 +52,23 @@
                         background-color: #c6ff4f;
                         transform: skew(-20deg);
                         margin-right: 0.5vw;
+
+                        @media (max-width: 416px) {
+                            width: 2vw;
+                            height: 2.1vw;
+                            margin-right: 1vw;
+                        }
                     }
 
                     p {
                         font-size: 1.2vw;
                         line-height: 1.7;
                         width: 43%;
+
+                        @media (max-width: 416px) {
+                            font-size: 3.4vw;
+                            width: 70%;
+                        }
 
                         span {
                             display: inline-block;
@@ -66,6 +91,10 @@
                         left: 0;
                         object-fit: cover;
                         border-radius: 1vw;
+
+                        @media (max-width: 416px) {
+                            display: none;
+                        }
                     }
                 }
 
@@ -75,11 +104,20 @@
                     .box {
                         margin-left: 0.5vw;
                         margin-right: 0;
+
+                        @media (max-width: 416px) {
+                            margin-left: 1vw;
+                        }
                     }
 
                     p {
                         text-align: left;
                         margin-left: 1.5vw;
+
+                        @media (max-width: 416px) {
+                            margin-left: 3vw;
+                            width: 80%;
+                        }
                     }
 
                     img {
@@ -90,6 +128,10 @@
                         right: 0;
                         object-fit: cover;
                         border-radius: 1vw;
+
+                        @media (max-width: 416px) {
+                            display: none;
+                        }
                     }
                 }
             }
@@ -101,11 +143,20 @@
             display: flex;
             flex-direction: column;
             position: relative;
-            margin-top: 3vw;
+            margin-top: 6vw;
+
+            @media (max-width: 416px) {
+                align-items: center;
+                gap: 5vw;
+            }
 
             h1 {
                 font-size: 3.5vw;
                 color: #F2FFC4;
+
+                @media (max-width: 416px) {
+                    font-size: 7.1vw;
+                }
             }
 
             .curvedArrow {
@@ -114,6 +165,10 @@
                 top: 35%;
                 left: 10%;
                 transform: rotate(20deg);
+
+                @media (max-width: 416px) {
+                    display: none;
+                }
 
                 .arrowPath {
                     fill: none;
@@ -130,6 +185,11 @@
                 align-self: flex-end;
                 margin-right: 4vw;
 
+                @media (max-width: 416px) {
+                    align-self: center;
+                    max-width: 100%;
+                }
+
                 li {
                     margin-bottom: 1.6vw;
                     padding: 1.2vw 2vw;
@@ -140,6 +200,15 @@
                     text-align: left;
                     color: #ccc;
                     transition: all 0.3s ease;
+
+                    @media (max-width: 416px) {
+                        padding: 3vw 4vw;
+                        font-size: 2.8vw;
+                        margin-bottom: 4vw;
+                        height: 6.5vh;
+                        display: flex;
+                        align-items: center;
+                    }
 
                     &:hover {
                         background-color: #222;
@@ -157,11 +226,20 @@
             margin-top: 5vw;
             gap: 6vw;
 
+            @media (max-width: 416px) {
+                margin-top: 15vw;
+            }
+
             h1 {
                 font-size: 3.5vw;
                 color: #F2FFC4;
                 position: relative;
                 align-self: flex-end;
+
+                @media (max-width: 416px) {
+                    font-size: 7.1vw;
+                    align-self: center;
+                }
             }
 
             .differenceContent {
@@ -169,6 +247,12 @@
                 gap: 4vw;
                 justify-content: center;
                 flex-wrap: wrap;
+
+                @media (max-width: 416px) {
+                    flex-direction: column;
+                    align-items: center;
+                    gap: 7vw;
+                }
 
                 .point {
                     background: #1c1c1c;
@@ -180,6 +264,11 @@
                     color: #ccc;
                     transition: all 0.3s ease;
 
+                    @media (max-width: 416px) {
+                        max-width: 100%;
+                        padding: 8vw;
+                    }
+
                     &:hover {
                         background: #222;
                         color: #fff;
@@ -189,6 +278,10 @@
                         font-size: 1.1vw;
                         margin: 0;
                         line-height: 1.7;
+
+                        @media (max-width: 416px) {
+                            font-size: 3.5vw;
+                        }
                     }
                 }
             }
@@ -199,6 +292,12 @@
                 align-self: center;
                 color: #c6ff4f;
                 margin-bottom: 4vw;
+
+                @media (max-width: 416px) {
+                    font-size: 3.3vw;
+                    margin-top: 3vw;
+                    text-align: center;
+                }
             }
         }
 
@@ -220,12 +319,22 @@
                 flex-direction: column;
                 gap: 4vw;
 
+                @media (max-width: 416px) {
+                    margin-top: 10vw;
+                    max-width: 100%;
+                    height: fit-content;
+                }
+
                 h1 {
                     font-size: 4vw;
                     color: #F2FFC4;
                     align-self: center;
                     position: relative;
                     z-index: 1;
+
+                    @media (max-width: 416px) {
+                        font-size: 7.1vw;
+                    }
 
                     &::after {
                         content: 'FOUNDERS';
@@ -238,6 +347,12 @@
                         color: #444;
                         font-size: 6vw;
                         z-index: -1;
+
+                        @media (max-width: 416px) {
+                            font-size: 8vw;
+                            top: -40%;
+                            left: 15%;
+                        }
                     }
                 }
 
@@ -246,6 +361,10 @@
                     color: #ccc;
                     line-height: 1.7;
                     text-align: center;
+
+                    @media (max-width: 416px) {
+                        font-size: 3.5vw;
+                    }
 
                     strong {
                         color: #c6ff4f;
@@ -257,6 +376,12 @@
                 font-size: 1.2vw;
                 margin: 2vw 0;
                 overflow: hidden;
+
+                @media (max-width: 416px) {
+                    font-size: 3.3vw;
+                    margin: 7vw 0;
+                    text-align: center;
+                }
 
                 strong {
                     color: #c6ff4f;

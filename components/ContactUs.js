@@ -8,7 +8,7 @@ import { useEffect } from 'react';
 export default function ContactUs() {
 
   useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
+    const isMobile = window.innerWidth <= 416;
 
     import('locomotive-scroll').then(({ default: LocomotiveScroll }) => {
       const scrollEl = document.querySelector('[data-scroll-section]');
@@ -17,73 +17,82 @@ export default function ContactUs() {
       const locoScroll = new LocomotiveScroll({
         el: scrollEl,
         smooth: true,
+        smartphone: { smooth: true },
+        tablet: { smooth: true },
       });
 
-      ScrollTrigger.scrollerProxy(scrollEl, {
-        scrollTop(value) {
-          return arguments.length
-            ? locoScroll.scrollTo(value, { duration: 0, disableLerp: true })
-            : locoScroll.scroll.instance.scroll.y;
-        },
-        getBoundingClientRect() {
-          return {
-            top: 0,
-            left: 0,
-            width: window.innerWidth,
-            height: window.innerHeight,
-          };
-        },
-        pinType: getComputedStyle(scrollEl).transform !== 'none' ? 'transform' : 'fixed',
-      });
+      if (!isMobile) {
+        gsap.registerPlugin(ScrollTrigger);
 
-      locoScroll.on('scroll', ScrollTrigger.update);
+        ScrollTrigger.scrollerProxy(scrollEl, {
+          scrollTop(value) {
+            return arguments.length
+              ? locoScroll.scrollTo(value, { duration: 0, disableLerp: true })
+              : locoScroll.scroll.instance.scroll.y;
+          },
+          getBoundingClientRect() {
+            return {
+              top: 0,
+              left: 0,
+              width: window.innerWidth,
+              height: window.innerHeight,
+            };
+          },
+          pinType: getComputedStyle(scrollEl).transform !== 'none' ? 'transform' : 'fixed',
+        });
 
-      gsap.fromTo(
-        `.${styles.contactContainer}>h1`,
-        { y: 100, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 1,
-          ease: 'power3.out',
-        }
-      );
+        locoScroll.on('scroll', ScrollTrigger.update);
+        ScrollTrigger.defaults({ scroller: scrollEl });
 
-      gsap.fromTo(
-        `.${styles.blueBoxes} p`,
-        { y: 100, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.8,
-          ease: 'power3.out',
-          delay: 0.3,
-        }
-      );
-      
-      gsap.fromTo(
-        `.${styles.formLeft}`,
-        { x: -100, opacity: 0 },
-        {
-          x: 0,
-          opacity: 1,
-          duration: 0.8,
-          ease: 'power3.out',
-          delay: 0.3,
-        }
-      );
-      
-      gsap.fromTo(
-        `.${styles.formRight}`,
-        { x: 100, opacity: 0 },
-        {
-          x: 0,
-          opacity: 1,
-          duration: 0.8,
-          ease: 'power3.out',
-          delay: 0.3,
-        }
-      );
+        gsap.fromTo(
+          `.${styles.contactContainer}>h1`,
+          { y: 100, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 1,
+            ease: 'power3.out',
+          }
+        );
+
+        gsap.fromTo(
+          `.${styles.blueBoxes} p`,
+          { y: 100, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.8,
+            ease: 'power3.out',
+            delay: 0.3,
+          }
+        );
+
+        gsap.fromTo(
+          `.${styles.formLeft}`,
+          { x: -100, opacity: 0 },
+          {
+            x: 0,
+            opacity: 1,
+            duration: 0.8,
+            ease: 'power3.out',
+            delay: 0.3,
+          }
+        );
+
+        gsap.fromTo(
+          `.${styles.formRight}`,
+          { x: 100, opacity: 0 },
+          {
+            x: 0,
+            opacity: 1,
+            duration: 0.8,
+            ease: 'power3.out',
+            delay: 0.3,
+          }
+        );
+      }
+
+      return () => locoScroll && locoScroll.destroy();
     });
   }, []);
 
@@ -148,7 +157,6 @@ export default function ContactUs() {
                   <input type="text" placeholder="Last Name" />
                 </div>
               </div>
-
               <div className={styles.row}>
                 <div className={styles.inputGroup}>
                   <label>Email</label>
@@ -159,23 +167,20 @@ export default function ContactUs() {
                   <input type="tel" placeholder="Phone Number" />
                 </div>
               </div>
-
               <div className={styles.inputGroup}>
                 <label>Subject</label>
                 <input type="text" placeholder="Subject" />
               </div>
-
               <div className={styles.inputGroup}>
                 <label>Message</label>
                 <textarea placeholder="Message"></textarea>
               </div>
-
               <button type="submit">Send Message</button>
             </form>
           </div>
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </section>
   );
 }

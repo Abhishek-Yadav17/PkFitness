@@ -5,248 +5,233 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useEffect } from 'react';
 
-export default function ContactUs() {
+export default function AboutUs() {
 
     useEffect(() => {
+    const isMobile = window.innerWidth <= 416;
+
+    if (isMobile) {
+      document.querySelectorAll('[data-scroll-speed]').forEach((el) => {
+        el.removeAttribute('data-scroll-speed');
+        el.removeAttribute('data-scroll');
+      });
+    }
+
+    import('locomotive-scroll').then(({ default: LocomotiveScroll }) => {
+      const scrollEl = document.querySelector('[data-scroll-section]');
+      if (!scrollEl) return;
+
+      const locoScroll = new LocomotiveScroll({
+        el: scrollEl,
+        smooth: true,
+        smartphone: { smooth: true },
+        tablet: { smooth: true },
+      });
+
+      if (!isMobile) {
         gsap.registerPlugin(ScrollTrigger);
 
-        import('locomotive-scroll').then(({ default: LocomotiveScroll }) => {
-            const scrollEl = document.querySelector('[data-scroll-section]');
-            if (!scrollEl) return;
-
-            const locoScroll = new LocomotiveScroll({
-                el: scrollEl,
-                smooth: true,
-            });
-
-            ScrollTrigger.scrollerProxy(scrollEl, {
-                scrollTop(value) {
-                    return arguments.length
-                        ? locoScroll.scrollTo(value, { duration: 0, disableLerp: true })
-                        : locoScroll.scroll.instance.scroll.y;
-                },
-                getBoundingClientRect() {
-                    return {
-                        top: 0,
-                        left: 0,
-                        width: window.innerWidth,
-                        height: window.innerHeight,
-                    };
-                },
-                pinType: getComputedStyle(scrollEl).transform !== 'none' ? 'transform' : 'fixed',
-            });
-
-            locoScroll.on('scroll', ScrollTrigger.update);
-
-
-            gsap.fromTo(
-                `.${styles.aboutUsIn} h1`,
-                { y: 100, opacity: 0 },
-                {
-                    y: 0,
-                    opacity: 1,
-                    stagger: 0.2,
-                }
-            );
-
-            gsap.fromTo(
-                `.${styles.leftPara} span`,
-                { y: 100, opacity: 0 },
-                {
-                    y: 0,
-                    opacity: 1,
-                    stagger: 0.2,
-                    delay: 0.5,
-                    duration: 1,
-                    ease: 'power3.out',
-                }
-            );
-
-            gsap.fromTo(
-                `.${styles.leftPara} .${styles.box}, .${styles.rightPara} .${styles.box}`,
-                { x: -100, opacity: 0 },
-                {
-                    x: 0,
-                    opacity: 1,
-                    stagger: 0.1,
-                    duration: 1,
-                    ease: 'power3.out',
-                }
-            );
-
-            gsap.fromTo(
-                `.${styles.rightPara} span`,
-                { y: 100, opacity: 0 },
-                {
-                    y: 0,
-                    opacity: 1,
-                    stagger: 0.2,
-                    delay: 0.8,
-                    duration: 1,
-                    ease: 'power3.out',
-                }
-            );
-
-            ['leftPara', 'rightPara'].forEach((section) => {
-                const container = document.querySelector(`.${styles[section]}`);
-                const img = container?.querySelector('img');
-
-                if (!container || !img) return;
-
-                container.addEventListener('mouseenter', () => {
-                    gsap.to(img, {
-                        scale: 1,
-                        opacity: 1,
-                        duration: 0.5,
-                        ease: 'power3.out',
-                    });
-                });
-
-                container.addEventListener('mouseleave', () => {
-                    gsap.to(img, {
-                        x: 0,
-                        y: 0,
-                        duration: 0.5,
-                        ease: 'power3.inOut',
-                    });
-                });
-                container.addEventListener('mousemove', (e) => {
-                    const rect = container.getBoundingClientRect();
-                    const x = e.clientX - rect.left;
-                    const y = e.clientY - rect.top;
-                    gsap.to(img, {
-                        x: x - rect.width / 2,
-                        y: y - rect.height / 2,
-                        duration: 0.3,
-                        ease: 'power2.out',
-                    });
-                });
-            });
-
-            gsap.fromTo(
-                `.${styles.aboutList} h1`,
-                { y: 100, opacity: 0 },
-                {
-                    y: 0,
-                    opacity: 1,
-                    duration: 1,
-                    ease: 'power3.out',
-                    scrollTrigger: {
-                        trigger: `.${styles.aboutList}`,
-                        scroller: scrollEl,
-                        start: 'top 100%',
-                        scrub: 0.5
-                    },
-                }
-            );
-
-            gsap.fromTo(
-                `.${styles.aboutList} li`,
-                { x: 100, opacity: 0 },
-                {
-                    x: 0,
-                    opacity: 1,
-                    stagger: 0.1,
-                    duration: 0.5,
-                    ease: 'power3.out',
-                    scrollTrigger: {
-                        trigger: `.${styles.aboutList}`,
-                        scroller: scrollEl,
-                        scrub: 0.5,
-                        start: 'top 120%',
-                    },
-                }
-            );
-
-            gsap.fromTo(
-                `.${styles.aboutDetails} h1`,
-                { y: 100, opacity: 0 },
-                {
-                    y: 0,
-                    opacity: 1,
-                    stagger: 0.1,
-                    duration: 1,
-                    ease: 'power3.out',
-                    scrollTrigger: {
-                        trigger: `.${styles.aboutDetails}`,
-                        scroller: scrollEl,
-                        scrub: 0.5,
-                        start: 'top 90%',
-                    },
-                }
-            );
-
-            gsap.fromTo(
-                `.${styles.point}:nth-child(1)`,
-                { x: -100, opacity: 0 },
-                {
-                    x: 0,
-                    opacity: 1,
-                    stagger: 0.1,
-                    duration: 1,
-                    ease: 'power3.out',
-                    scrollTrigger: {
-                        trigger: `.${styles.aboutDetails}`,
-                        scroller: scrollEl,
-                        scrub: 0.5,
-                        start: 'top 90%',
-                    },
-                }
-            );
-
-            gsap.fromTo(
-                `.${styles.point}:nth-child(2)`,
-                { x: 100, opacity: 0 },
-                {
-                    x: 0,
-                    opacity: 1,
-                    stagger: 0.1,
-                    duration: 1,
-                    ease: 'power3.out',
-                    scrollTrigger: {
-                        trigger: `.${styles.aboutDetails}`,
-                        scroller: scrollEl,
-                        scrub: 0.5,
-                        start: 'top 90%',
-                    },
-                }
-            );
-
-            gsap.fromTo(
-                `.${styles.foundersSection} h1`,
-                { y: 100, opacity: 0 },
-                {
-                    y: 0,
-                    opacity: 1,
-                    duration: 1,
-                    ease: 'power3.out',
-                    scrollTrigger: {
-                        trigger: `.${styles.foundersSection}`,
-                        scroller: scrollEl,
-                        start: 'top 100%',
-                        scrub: 0.5
-                    },
-                }
-            );
-
-            gsap.fromTo(
-                `.${styles.highlight}`,
-                { y: 100, opacity: 0 },
-                {
-                    y: 0,
-                    opacity: 1,
-                    duration: 1,
-                    ease: 'power3.out',
-                    scrollTrigger: {
-                        trigger: `.${styles.foundersSection}`,
-                        scroller: scrollEl,
-                        start: 'top 20%',
-                        scrub: 0.5
-                    },
-                }
-            );
+        ScrollTrigger.scrollerProxy(scrollEl, {
+          scrollTop(value) {
+            return arguments.length
+              ? locoScroll.scrollTo(value, { duration: 0, disableLerp: true })
+              : locoScroll.scroll.instance.scroll.y;
+          },
+          getBoundingClientRect() {
+            return {
+              top: 0,
+              left: 0,
+              width: window.innerWidth,
+              height: window.innerHeight,
+            };
+          },
+          pinType: getComputedStyle(scrollEl).transform !== 'none' ? 'transform' : 'fixed',
         });
-    }, []);
+
+        locoScroll.on('scroll', ScrollTrigger.update);
+        ScrollTrigger.defaults({ scroller: scrollEl });
+
+        gsap.fromTo(
+          `.${styles.aboutUsIn} h1`,
+          { y: 100, opacity: 0 },
+          { y: 0, opacity: 1, stagger: 0.2 }
+        );
+
+        gsap.fromTo(
+          `.${styles.leftPara} span`,
+          { y: 100, opacity: 0 },
+          { y: 0, opacity: 1, stagger: 0.2, delay: 0.5, duration: 1, ease: 'power3.out' }
+        );
+
+        gsap.fromTo(
+          `.${styles.leftPara} .${styles.box}, .${styles.rightPara} .${styles.box}`,
+          { x: -100, opacity: 0 },
+          { x: 0, opacity: 1, stagger: 0.1, duration: 1, ease: 'power3.out' }
+        );
+
+        gsap.fromTo(
+          `.${styles.rightPara} span`,
+          { y: 100, opacity: 0 },
+          { y: 0, opacity: 1, stagger: 0.2, delay: 0.8, duration: 1, ease: 'power3.out' }
+        );
+
+        ['leftPara', 'rightPara'].forEach((section) => {
+          const container = document.querySelector(`.${styles[section]}`);
+          const img = container?.querySelector('img');
+
+          if (!container || !img) return;
+
+          container.addEventListener('mouseenter', () => {
+            gsap.to(img, {
+              scale: 1,
+              opacity: 1,
+              duration: 0.5,
+              ease: 'power3.out',
+            });
+          });
+
+          container.addEventListener('mouseleave', () => {
+            gsap.to(img, {
+              x: 0,
+              y: 0,
+              duration: 0.5,
+              ease: 'power3.inOut',
+            });
+          });
+
+          container.addEventListener('mousemove', (e) => {
+            const rect = container.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            gsap.to(img, {
+              x: x - rect.width / 2,
+              y: y - rect.height / 2,
+              duration: 0.3,
+              ease: 'power2.out',
+            });
+          });
+        });
+
+        gsap.fromTo(
+          `.${styles.aboutList} h1`,
+          { y: 100, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 1,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: `.${styles.aboutList}`,
+              start: 'top 100%',
+              scrub: 0.5,
+            },
+          }
+        );
+
+        gsap.fromTo(
+          `.${styles.aboutList} li`,
+          { x: 100, opacity: 0 },
+          {
+            x: 0,
+            opacity: 1,
+            stagger: 0.1,
+            duration: 0.5,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: `.${styles.aboutList}`,
+              scrub: 0.5,
+              start: 'top 120%',
+            },
+          }
+        );
+
+        gsap.fromTo(
+          `.${styles.aboutDetails} h1`,
+          { y: 100, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            stagger: 0.1,
+            duration: 1,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: `.${styles.aboutDetails}`,
+              scrub: 0.5,
+              start: 'top 90%',
+            },
+          }
+        );
+
+        gsap.fromTo(
+          `.${styles.point}:nth-child(1)`,
+          { x: -100, opacity: 0 },
+          {
+            x: 0,
+            opacity: 1,
+            stagger: 0.1,
+            duration: 1,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: `.${styles.aboutDetails}`,
+              scrub: 0.5,
+              start: 'top 90%',
+            },
+          }
+        );
+
+        gsap.fromTo(
+          `.${styles.point}:nth-child(2)`,
+          { x: 100, opacity: 0 },
+          {
+            x: 0,
+            opacity: 1,
+            stagger: 0.1,
+            duration: 1,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: `.${styles.aboutDetails}`,
+              scrub: 0.5,
+              start: 'top 90%',
+            },
+          }
+        );
+
+        gsap.fromTo(
+          `.${styles.foundersSection} h1`,
+          { y: 100, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 1,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: `.${styles.foundersSection}`,
+              start: 'top 100%',
+              scrub: 0.5,
+            },
+          }
+        );
+
+        gsap.fromTo(
+          `.${styles.highlight}`,
+          { y: 100, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 1,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: `.${styles.foundersSection}`,
+              start: 'top 20%',
+              scrub: 0.5,
+            },
+          }
+        );
+      }
+
+      return () => locoScroll && locoScroll.destroy();
+    });
+  }, []);
 
     return (
         <section className={styles.aboutPage} data-scroll-section>
