@@ -140,6 +140,7 @@
         h4 {
           text-align: left;
           margin-top: 1vw;
+          cursor: pointer;
 
           @media (max-width: 416px) {
             font-size: 3vw;
@@ -174,6 +175,8 @@
         h4 {
           text-align: left;
           margin-top: 1vw;
+          text-decoration: none;
+          cursor: pointer;
 
           @media (max-width: 416px) {
             font-size: 3vw;

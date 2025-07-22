@@ -26,13 +26,13 @@ export default function Footer() {
         <div className={styles.footerRight}>
           <div className={styles.pages}>
             <h2>Pages</h2>
-            <h4 style={{ cursor: 'pointer' }} onClick={() => handleReloadNavigate('/')}>Homepage</h4>
-            <h4 style={{ cursor: 'pointer' }} onClick={() => handleReloadNavigate('/contact')}>Contact Us</h4>
-            <h4 style={{ cursor: 'pointer' }} onClick={() => handleReloadNavigate('/aboutus')}>About Us</h4>
+            <h4 onClick={() => handleReloadNavigate('/')}>Homepage</h4>
+            <h4 onClick={() => handleReloadNavigate('/contact')}>Contact Us</h4>
+            <h4 onClick={() => handleReloadNavigate('/aboutus')}>About Us</h4>
           </div>
           <div className={styles.socialMedia}>
             <h2>Socail Media</h2>
-            <h4>Instagram</h4>
+            <h4 onClick={() => window.open('https://www.instagram.com/pkfitnessandnutritions?igsh=MTN1Z2c4NGRrMGh2NQ%3D%3D&utm_source=qr', '_blank')}>Instagram</h4>
             <h4>LinkedIn</h4>
             <h4>Facebook</h4>
             <h4>Twitter</h4>
