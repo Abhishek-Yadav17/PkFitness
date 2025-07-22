@@ -7,66 +7,66 @@ import Image from 'next/image';
 gsap.registerPlugin(ScrollTrigger);
 
 export default function AboutDetails() {
-  useEffect(() => {
-    if (window.innerWidth <= 767) return;
+  // useEffect(() => {
+  //   if (window.innerWidth <= 767) return;
 
-    gsap.utils.toArray(`.${styles.details}`).forEach((detail, i) => {
-      const img = detail.querySelector('img');
-      const span = detail.querySelector(`.${styles.imageLabel}`);
-      const textElements = detail.querySelectorAll(
-        `.${styles.detailsInner} h2, .${styles.detailsInner} h4, .${styles.detailsInner} h5, .${styles.detailsInner} ul`
-      );
+  //   gsap.utils.toArray(`.${styles.details}`).forEach((detail, i) => {
+  //     const img = detail.querySelector('img');
+  //     const span = detail.querySelector(`.${styles.imageLabel}`);
+  //     const textElements = detail.querySelectorAll(
+  //       `.${styles.detailsInner} h2, .${styles.detailsInner} h4, .${styles.detailsInner} h5, .${styles.detailsInner} ul`
+  //     );
 
-      gsap.fromTo(
-        img,
-        { x: i % 2 === 0 ? -150 : 150, opacity: 0 },
-        {
-          x: 0,
-          opacity: 1,
-          scrollTrigger: {
-            trigger: detail,
-            start: 'top 160%',
-            scrub: 1,
-          },
-          duration: 1,
-          ease: 'power3.out',
-        }
-      );
+  //     gsap.fromTo(
+  //       img,
+  //       { x: i % 2 === 0 ? -150 : 150, opacity: 0 },
+  //       {
+  //         x: 0,
+  //         opacity: 1,
+  //         scrollTrigger: {
+  //           trigger: detail,
+  //           start: 'top 160%',
+  //           scrub: 1,
+  //         },
+  //         duration: 1,
+  //         ease: 'power3.out',
+  //       }
+  //     );
 
-      gsap.fromTo(
-        span,
-        { y: 100, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          scrollTrigger: {
-            trigger: detail,
-            start: 'top 160%',
-            scrub: 1,
-          },
-          duration: 1,
-          delay: 0.2,
-          ease: 'power3.out',
-        }
-      );
+  //     gsap.fromTo(
+  //       span,
+  //       { y: 100, opacity: 0 },
+  //       {
+  //         y: 0,
+  //         opacity: 1,
+  //         scrollTrigger: {
+  //           trigger: detail,
+  //           start: 'top 160%',
+  //           scrub: 1,
+  //         },
+  //         duration: 1,
+  //         delay: 0.2,
+  //         ease: 'power3.out',
+  //       }
+  //     );
 
-      gsap.fromTo(
-        textElements,
-        { y: 100, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          stagger: 0.15,
-          scrollTrigger: {
-            trigger: detail,
-            start: 'top 90%',
-          },
-          duration: 1,
-          ease: 'power3.out',
-        }
-      );
-    });
-  }, []);
+  //     gsap.fromTo(
+  //       textElements,
+  //       { y: 100, opacity: 0 },
+  //       {
+  //         y: 0,
+  //         opacity: 1,
+  //         stagger: 0.15,
+  //         scrollTrigger: {
+  //           trigger: detail,
+  //           start: 'top 90%',
+  //         },
+  //         duration: 1,
+  //         ease: 'power3.out',
+  //       }
+  //     );
+  //   });
+  // }, []);
 
   return (
     <div className={styles.aboutDetails}>
