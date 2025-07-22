@@ -122,16 +122,6 @@
         width: 20%;
         align-self: flex-start;
 
-        a {
-          text-decoration: none;
-          color: #fff;
-          transition: all ease 0.5s;
-
-          &:hover {
-            text-decoration: underline;
-          }
-        }
-
         @media (max-width: 416px) {
           width: fit-content;
         }
@@ -155,6 +145,10 @@
             font-size: 3vw;
             margin-top: 3vw;
           }
+
+          &:hover {
+            text-decoration: underline;
+          }
         }
       }
 
@@ -164,16 +158,6 @@
 
         @media (max-width: 416px) {
           width: fit-content;
-        }
-
-        a {
-          text-decoration: none;
-          color: #fff;
-          transition: all ease 0.5s;
-
-          &:hover {
-            text-decoration: underline;
-          }
         }
 
         h2 {

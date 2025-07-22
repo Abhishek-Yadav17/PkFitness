@@ -6,6 +6,7 @@ import { useRouter } from 'next/router';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
+
 export default function Navbar() {
   const router = useRouter();
   const [menuOpen, setMenuOpen] = useState(false);
@@ -36,16 +37,16 @@ export default function Navbar() {
       <img src='pkfitnesslogo.jpg' alt='logo' />
 
       <div className={styles.navmid}>
-        <a href="/" passHref>
+        <Link href="/" passHref>
           <h4 data-text="Homepage">Homepage</h4>
-        </a>
+        </Link>
         <h4 data-text="Services" style={{ cursor: 'pointer' }} onClick={() => {
           document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' });
           setTimeout(() => ScrollTrigger.refresh(), 600);
         }}>Services</h4>
-        <a href='/aboutus'>
+        <Link href='/aboutus'>
           <h4 data-text="About Us">About Us</h4>
-        </a>
+        </Link>
       </div>
 
       <div
@@ -58,18 +59,18 @@ export default function Navbar() {
 
       {menuOpen && (
         <div className={styles.dropdownMenu}>
-          <a href="/" passHref>
+          <Link href="/" passHref>
             <h4 onClick={() => setMenuOpen(false)}>Homepage</h4>
-          </a>
+          </Link>
           <h4 style={{ cursor: 'pointer' }} onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}>Services</h4>
-          <a href='/aboutus' passHref>
+          <Link href='/aboutus' passHref>
             <h4 onClick={() => setMenuOpen(false)}>About Us</h4>
-          </a>
+          </Link>
         </div>
       )}
-      <a href='/contact'>
+      <Link href='/contact'>
         <button className={styles.navBtn}>Contact Us</button>
-      </a>
+      </Link>
     </nav>
   );
 }

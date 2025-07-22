@@ -1,6 +1,15 @@
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 import styles from '../styles/Footer.module.scss';
 
 export default function Footer() {
+
+  const router = useRouter();
+
+  const handleReloadNavigate = (path) => {
+    router.push(path).then(() => window.location.reload());
+  };
+
   return (
     <footer className={styles.footer}>
       <div className={styles.footerContent}>
@@ -17,28 +26,18 @@ export default function Footer() {
         <div className={styles.footerRight}>
           <div className={styles.pages}>
             <h2>Pages</h2>
-            <a href="/" passHref>
-              <h4>Homepage</h4>
-            </a>
-            <a href="/contact">
-              <h4>Contact Us</h4>
-            </a>
-            <a href="/aboutus">
-              <h4>About Us</h4>
-            </a>
+            <h4 style={{ cursor: 'pointer' }} onClick={() => handleReloadNavigate('/')}>Homepage</h4>
+            <h4 style={{ cursor: 'pointer' }} onClick={() => handleReloadNavigate('/contact')}>Contact Us</h4>
+            <h4 style={{ cursor: 'pointer' }} onClick={() => handleReloadNavigate('/aboutus')}>About Us</h4>
           </div>
           <div className={styles.socialMedia}>
             <h2>Socail Media</h2>
-            <a href='https://www.instagram.com/pkfitnessandnutritions?igsh=MTN1Z2c4NGRrMGh2NQ%3D%3D&utm_source=qr' target='_blank'>
-              <h4>Instagram</h4>
-            </a>
+            <h4>Instagram</h4>
             <h4>LinkedIn</h4>
             <h4>Facebook</h4>
             <h4>Twitter</h4>
           </div>
-          <a href="/contact">
-            <button>Book a Call</button>
-          </a>
+          <button onClick={() => handleReloadNavigate('/contact')}>Book a Call</button>
         </div>
       </div>
     </footer>
