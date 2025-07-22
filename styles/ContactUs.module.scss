@@ -13,6 +13,10 @@
     align-items: flex-start;
     padding: 3vw 6vw;
 
+    @media (max-width: 768px) {
+        padding-bottom: 30vw;
+      }
+
     >h1 {
       font-size: 3.5vw;
       color: #F2FFC4;
@@ -39,7 +43,7 @@
         @media (max-width: 768px) {
           font-size: 3.3vw;
           width: 100%;
-          margin-bottom: 6vw;
+          margin-bottom: 20vw;
           line-height: 4vw;
         }
       }
@@ -58,293 +62,292 @@
         }
       }
     }
-  }
 
-  .contactForm {
-    height: 90vh;
-    width: 100%;
-    margin: 4vw 0;
-    border-top: 1px solid #2f2e2e;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding-top: 5vw;
-
-    @media (max-width: 768px) {
-      flex-direction: column;
-      border: none;
-      gap: 7vw;
-      margin-top: 20vw;
-      padding-bottom: 20vw;
-    }
-
-    .formLeft {
-      height: 100%;
-      width: 40%;
+    .contactForm {
+      height: 90vh;
+      width: 100%;
+      margin: 4vw 0;
+      border-top: 1px solid #2f2e2e;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-top: 5vw;
 
       @media (max-width: 768px) {
-        width: 100%;
-      }
-
-      .formLeftTop {
-        height: 25%;
-        width: 100%;
-
-        @media (max-width: 768px) {
-          height: fit-content;
-        }
-
-        h1 {
-          font-size: 2vw;
-          margin-bottom: 2vw;
-
-          @media (max-width: 768px) {
-            font-size: 3.5vw;
-            margin-bottom: 4vw;
-          }
-        }
-
-        h4 {
-          font-weight: lighter;
-          color: #f2eded;
-          width: 95%;
-
-          @media (max-width: 768px) {
-            font-size: 5vw;
-            width: 100%;
-            margin-bottom: 8vw;
-          }
-        }
-      }
-
-      .formLeftMid {
-        height: 25%;
-        width: 100%;
-        padding-top: 1vw;
-
-        @media (max-width: 768px) {
-          height: fit-content;
-        }
-
-        h5 {
-          font-size: 1vw;
-          margin-bottom: 1vw;
-
-          @media (max-width: 768px) {
-            font-size: 3.5vw;
-          }
-        }
-
-        .socialIcons {
-          display: flex;
-          gap: 0.8vw;
-
-          @media (max-width: 768px) {
-            margin-top: 3vw;
-            gap: 3vw;
-            margin-bottom: 8vw;
-          }
-
-          div {
-            width: 2.5vw;
-            height: 2.5vw;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(145deg, #c6ff4f, #679a02);
-            border-radius: 0.3vw;
-            font-size: 1.2vw;
-            cursor: pointer;
-
-            @media (max-width: 768px) {
-              height: 7vw;
-              width: 7vw;
-              font-size: 4vw;
-            }
-          }
-        }
-      }
-
-      .formLeftBottom {
-        height: 50%;
-        width: 80%;
-        display: flex;
         flex-direction: column;
-        justify-content: space-around;
+        border: none;
+        gap: 15vw;
+        margin-top: 20vw;
+        padding-bottom: 20vw;
+      }
+
+      .formLeft {
+        height: 100%;
+        width: 40%;
 
         @media (max-width: 768px) {
-          height: fit-content;
-          margin-top: 6vw;
-          gap: 3vw;
           width: 100%;
         }
 
-        .infoBox {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          padding: 1.1vw;
-          border-radius: 0.5vw;
-          cursor: pointer;
-          transition: all ease 0.5s;
-          border: 1px solid #c7ff4f34;
-          background-color: transparent;
+        .formLeftTop {
+          height: 25%;
+          width: 100%;
 
           @media (max-width: 768px) {
-            padding: 4vw;
+            height: fit-content;
           }
 
-          p {
-            font-size: 0.9vw;
-            font-weight: 500;
-            margin-bottom: 0.3vw;
-            color: gray;
+          h1 {
+            font-size: 2vw;
+            margin-bottom: 2vw;
 
             @media (max-width: 768px) {
-              font-size: 3vw;
-              margin-bottom: 1vw;
+              font-size: 3.5vw;
+              margin-bottom: 4vw;
             }
           }
 
-          span {
-            font-size: 1vw;
+          h4 {
+            font-weight: lighter;
+            color: #f2eded;
+            width: 95%;
 
             @media (max-width: 768px) {
-              font-size: 3vw;
+              font-size: 5vw;
+              width: 100%;
+              margin-bottom: 8vw;
             }
-          }
-
-          i {
-            font-size: 1.2vw;
-            color: #fff;
-
-            @media (max-width: 768px) {
-              font-size: 3vw;
-              margin-bottom: 1vw;
-            }
-          }
-
-          &:hover {
-            background-color: #c6ff4f;
-            color: #000;
-          }
-
-          &:hover i {
-            color: #000;
           }
         }
+
+        .formLeftMid {
+          height: 25%;
+          width: 100%;
+          padding-top: 1vw;
+
+          @media (max-width: 768px) {
+            height: fit-content;
+          }
+
+          h5 {
+            font-size: 1vw;
+            margin-bottom: 1vw;
+
+            @media (max-width: 768px) {
+              font-size: 3.5vw;
+            }
+          }
+
+          .socialIcons {
+            display: flex;
+            gap: 0.8vw;
+
+            @media (max-width: 768px) {
+              margin-top: 3vw;
+              gap: 3vw;
+              margin-bottom: 8vw;
+            }
+
+            div {
+              width: 2.5vw;
+              height: 2.5vw;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              background: linear-gradient(145deg, #c6ff4f, #679a02);
+              border-radius: 0.3vw;
+              font-size: 1.2vw;
+              cursor: pointer;
+
+              @media (max-width: 768px) {
+                height: 7vw;
+                width: 7vw;
+                font-size: 4vw;
+              }
+            }
+          }
+        }
+
+        .formLeftBottom {
+          height: 50%;
+          width: 80%;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-around;
+
+          @media (max-width: 768px) {
+            height: fit-content;
+            margin-top: 6vw;
+            gap: 3vw;
+            width: 100%;
+          }
+
+          .infoBox {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.1vw;
+            border-radius: 0.5vw;
+            cursor: pointer;
+            transition: all ease 0.5s;
+            border: 1px solid #c7ff4f34;
+            background-color: transparent;
+
+            @media (max-width: 768px) {
+              padding: 3vw;
+            }
+
+            p {
+              font-size: 0.9vw;
+              font-weight: 500;
+              margin-bottom: 0.3vw;
+              color: gray;
+
+              @media (max-width: 768px) {
+                font-size: 3vw;
+                margin-bottom: 1vw;
+              }
+            }
+
+            span {
+              font-size: 1vw;
+
+              @media (max-width: 768px) {
+                font-size: 3vw;
+              }
+            }
+
+            i {
+              font-size: 1.2vw;
+              color: #fff;
+
+              @media (max-width: 768px) {
+                font-size: 3vw;
+                margin-bottom: 1vw;
+              }
+            }
+
+            &:hover {
+              background-color: #c6ff4f;
+              color: #000;
+            }
+
+            &:hover i {
+              color: #000;
+            }
+          }
+        }
+
       }
 
-    }
-
-    .formRight {
-      width: 50%;
-      height: 100%;
-      box-shadow: 0 0 15px rgba(199, 255, 79, 0.163);
-      padding: 2vw;
-      border-radius: 0.5vw;
-      border: 1px solid #55555576;
-
-      @media (max-width: 768px) {
-        width: 100%;
-        padding: 4vw;
-      }
-
-      .form {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
+      .formRight {
+        width: 50%;
         height: 100%;
+        box-shadow: 0 0 15px rgba(199, 255, 79, 0.163);
+        padding: 2vw;
+        border-radius: 0.5vw;
+        border: 1px solid #55555576;
 
         @media (max-width: 768px) {
-          gap: 4vw;
+          width: 100%;
+          padding: 4vw;
         }
 
-        .row {
+        .form {
           display: flex;
-          gap: 1vw;
+          flex-direction: column;
+          justify-content: space-between;
+          height: 100%;
 
           @media (max-width: 768px) {
             gap: 4vw;
           }
 
-          .inputGroup {
-            flex: 1;
+          .row {
             display: flex;
-            flex-direction: column;
-          }
-        }
-
-        .inputGroup {
-          display: flex;
-          flex-direction: column;
-
-          label {
-            color: #fff;
-            font-size: 0.9vw;
-            font-weight: bold;
-            margin-bottom: 0.7vw;
+            gap: 1vw;
 
             @media (max-width: 768px) {
-              font-size: 3vw;
-              margin-bottom: 1vw;
+              gap: 4vw;
+            }
+
+            .inputGroup {
+              flex: 1;
+              display: flex;
+              flex-direction: column;
             }
           }
 
-          input,
-          textarea {
-            background-color: #191919;
+          .inputGroup {
+            display: flex;
+            flex-direction: column;
+
+            label {
+              color: #fff;
+              font-size: 0.9vw;
+              font-weight: bold;
+              margin-bottom: 0.7vw;
+
+              @media (max-width: 768px) {
+                font-size: 3vw;
+                margin-bottom: 1vw;
+              }
+            }
+
+            input,
+            textarea {
+              background-color: #191919;
+              color: #fff;
+              border: 1px solid #c7ff4f37;
+              padding: 10px;
+              border-radius: 0.4vw;
+              font-size: 0.9vw;
+              font-family: NoiTesk;
+              transition: all 0.3s ease;
+              outline: none;
+
+              @media (max-width: 768px) {
+                padding: 2vw;
+                font-size: 2.2vw;
+              }
+            }
+
+            input:focus,
+            textarea:focus {
+              background-color: transparent;
+              border: 1px solid #c6ff4f;
+              box-shadow: 0 0 10px 2px rgba(0, 255, 13, 0.426);
+            }
+
+            textarea {
+              height: 7vw;
+              resize: none;
+            }
+          }
+
+          button {
+            width: 40%;
+            align-self: center;
+            background: linear-gradient(145deg, #c6ff4f, #679a02);
             color: #fff;
-            border: 1px solid #c7ff4f37;
-            padding: 10px;
+            padding: 1vw;
+            border: none;
             border-radius: 0.4vw;
-            font-size: 0.9vw;
-            font-family: NoiTesk;
+            font-size: 1vw;
+            cursor: pointer;
             transition: all 0.3s ease;
-            outline: none;
 
             @media (max-width: 768px) {
               padding: 2vw;
               font-size: 2.2vw;
             }
-          }
 
-          input:focus,
-          textarea:focus {
-            background-color: transparent;
-            border: 1px solid #c6ff4f;
-            box-shadow: 0 0 10px 2px rgba(0, 255, 13, 0.426);
-          }
-
-          textarea {
-            height: 7vw;
-            resize: none;
-          }
-        }
-
-        button {
-          width: 40%;
-          align-self: center;
-          background: linear-gradient(145deg, #c6ff4f, #679a02);
-          color: #fff;
-          padding: 1vw;
-          border: none;
-          border-radius: 0.4vw;
-          font-size: 1vw;
-          cursor: pointer;
-          transition: all 0.3s ease;
-
-          @media (max-width: 768px) {
-            padding: 2vw;
-            font-size: 2.2vw;
-          }
-
-          &:hover {
-            box-shadow: 0 2px 12px rgba(173, 255, 47, 0.5);
+            &:hover {
+              box-shadow: 0 2px 12px rgba(173, 255, 47, 0.5);
+            }
           }
         }
       }
     }
-
   }
 }

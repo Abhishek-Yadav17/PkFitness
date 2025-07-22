@@ -114,7 +114,7 @@ export default function ContactUs() {
                 <div><i className="ri-facebook-fill"></i></div>
                 <div><i className="ri-twitter-x-line"></i></div>
                 <div onClick={() => window.open('https://www.instagram.com/pkfitnessandnutritions?igsh=MTN1Z2c4NGRrMGh2NQ%3D%3D&utm_source=qr', '_blank')}
-                  style = {{ cursor: 'pointer' }}><i className="ri-instagram-line"></i></div>
+                  style={{ cursor: 'pointer' }}><i className="ri-instagram-line"></i></div>
               </div>
             </div>
             <div className={styles.formLeftBottom}>
