@@ -26,6 +26,14 @@ export default function Navbar() {
     );
   }, []);
 
+  const goToServices = () => {
+    if (router.pathname !== '/') {
+      router.push('/?scrollTo=services');
+    } else {
+      document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   useEffect(() => {
     setMenuOpen(false);
   }, [router.pathname]);
@@ -40,10 +48,7 @@ export default function Navbar() {
         <Link href="/" passHref>
           <h4 data-text="Homepage">Homepage</h4>
         </Link>
-        <h4 data-text="Services" style={{ cursor: 'pointer' }} onClick={() => {
-          document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' });
-          setTimeout(() => ScrollTrigger.refresh(), 600);
-        }}>Services</h4>
+        <h4 data-text="Services" style={{ cursor: 'pointer' }} onClick={goToServices}>Services</h4>
         <Link href='/aboutus'>
           <h4 data-text="About Us">About Us</h4>
         </Link>

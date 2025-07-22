@@ -1,5 +1,6 @@
 import styles from '../styles/Homepage.module.scss';
 import { useEffect } from 'react';
+import { useRouter } from 'next/router';
 import Footer from './Footer';
 import AboutDetails from './AboutDetails';
 import HeroSection from './Hero';
@@ -7,6 +8,8 @@ import GetStarted from './GetStarted';
 import Memberships from './Memberships';
 
 export default function Homepage() {
+
+  const router = useRouter();
 
   useEffect(() => {
     if (window.innerWidth <= 767) return;
@@ -48,8 +51,19 @@ export default function Homepage() {
     };
 
     loadGsapAnimations();
+
   }, []);
 
+  useEffect(() => {
+    if (router.query.scrollTo === 'services') {
+      if (window.gsap?.ScrollTrigger) {
+        window.gsap.ScrollTrigger.refresh();
+      }
+      setTimeout(() => {
+        document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+    }
+  }, [router.query]);
 
   return (
     <>
@@ -60,7 +74,9 @@ export default function Homepage() {
           <h1>PK FITNESS</h1>
           <h1>& NUTRITIONS</h1>
         </div>
-        <AboutDetails />
+        <div id="services">
+          <AboutDetails />
+        </div>
         <GetStarted />
       </section>
       <Memberships />

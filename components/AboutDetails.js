@@ -146,7 +146,7 @@ export default function AboutDetails() {
             <Image
               src={item.image}
               alt="details"
-              width={500}
+              width={500} 
               height={300}
               loading="lazy"
             />
