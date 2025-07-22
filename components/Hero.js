@@ -6,17 +6,27 @@ import Image from 'next/image';
 
 export default function HeroSection() {
     const images = ['/bg1.webp', '/bg2.webp', '/bg3.webp', '/bg4.webp', '/bg5.webp'];
+    const mobileImages = ['/mbg1.jpg', '/mbg2.jpg', '/mbg3.jpg', '/mbg4.jpg', '/mbg5.jpg'];
     const [bgIndex, setBgIndex] = useState(0);
+    const [isMobile, setIsMobile] = useState(false);
 
     useEffect(() => {
-        const interval = setInterval(() => {
-            setBgIndex((prevIndex) => (prevIndex + 1) % images.length);
-        }, 4000);
-        return () => clearInterval(interval);
+        const checkMobile = () => setIsMobile(window.innerWidth <= 767);
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+        return () => window.removeEventListener('resize', checkMobile);
     }, []);
 
     useEffect(() => {
-        if (window.innerWidth <= 767) return;
+        const currentImages = isMobile ? mobileImages : images;
+        const interval = setInterval(() => {
+            setBgIndex((prevIndex) => (prevIndex + 1) % currentImages.length);
+        }, 4000);
+        return () => clearInterval(interval);
+    }, [isMobile]);
+
+    useEffect(() => {
+        if (isMobile) return;
 
         const loadGsapAnimations = async () => {
             const gsap = (await import('gsap')).default;
@@ -43,11 +53,11 @@ export default function HeroSection() {
         };
 
         loadGsapAnimations();
-    }, []);
+    }, [isMobile]);
 
     return (
         <section className={styles.heroSection} style={{ position: 'relative' }}>
-            {images.map((src, index) => (
+            {(isMobile ? mobileImages : images).map((src, index) => (
                 <div
                     key={index}
                     className={styles.bgImage}
