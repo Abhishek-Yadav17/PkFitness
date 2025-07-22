@@ -11,7 +11,7 @@
             padding-right: 3vw;
             position: relative;
             gap: 8vw;
-            margin-top: 5vw;
+            margin-top: 3vw;
 
             @media (max-width: 768px) {
                 flex-direction: column;
@@ -130,6 +130,10 @@
                         }
                     }
                 }
+            }
+
+            &:nth-child(even) {
+                margin-top: 2vw;
             }
 
             &:nth-child(even) .imageLabel {
