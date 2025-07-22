@@ -72,8 +72,8 @@ export default function HeroSection() {
                         <span>This is Where Your Stronger Self Begins.</span>
                     </h1>
                     <p>
-                        <span>At PK Fitness, we go beyond the basics. Experience personalized</span>{' '}
-                        <span>training programs, state-of-the-art equipment, and a supportive</span>{' '}
+                        <span>At PK Fitness and Nutritions, we go beyond the basics. Experience personalized training programs,</span>{' '}
+                        <span> state-of-the-art equipment, and a supportive</span>{' '}
                         <span>community committed to real, lasting results.</span>
                     </p>
                     <Link href="/contact">

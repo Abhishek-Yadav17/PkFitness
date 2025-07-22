@@ -42,6 +42,7 @@
                     transform: rotate(-6deg);
                     transform-origin: bottom;
                     color: #F2FFC4;
+                    text-wrap: nowrap;
 
                     @media (max-width: 768px) {
                         transform: rotate(-12deg);

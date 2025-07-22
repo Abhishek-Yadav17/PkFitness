@@ -1,5 +1,5 @@
 .aboutDetails {
-        height: fit-content;
+        min-height: fit-content;
         width: 100%;
 
         .details {
@@ -16,8 +16,8 @@
             @media (max-width: 768px) {
                 flex-direction: column;
                 padding: 4vw;
-                margin-top: 3vw;
                 gap: 8vw;
+                padding-top: 20vw;
 
                 img {
                     order: 1;
@@ -52,7 +52,7 @@
 
                 @media (max-width: 768px) {
                     left: 10%;
-                    top: 1%;
+                    top: 3%;
                     font-size: 15vw;
                 }
             }

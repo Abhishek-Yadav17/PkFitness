@@ -12,6 +12,7 @@ export default function ContactUs() {
     lastName: '',
     email: '',
     phone: '',
+    subject: '',
     message: '',
   });
 
@@ -38,7 +39,7 @@ export default function ContactUs() {
 
   useEffect(() => {
 
-    if (window.innerWidth <= 416) return;
+    if (window.innerWidth <= 767) return;
 
     gsap.registerPlugin(ScrollTrigger);
 

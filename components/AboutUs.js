@@ -9,7 +9,7 @@ export default function AboutUs() {
 
   useEffect(() => {
 
-    if (window.innerWidth <= 416) return;
+    if (window.innerWidth <= 767) return;
 
     gsap.registerPlugin(ScrollTrigger);
 
