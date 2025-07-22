@@ -36,16 +36,16 @@ export default function Navbar() {
       <img src='pkfitnesslogo.jpg' alt='logo' />
 
       <div className={styles.navmid}>
-        <Link href="/" passHref>
+        <a href="/" passHref>
           <h4 data-text="Homepage">Homepage</h4>
-        </Link>
+        </a>
         <h4 data-text="Services" style={{ cursor: 'pointer' }} onClick={() => {
           document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' });
           setTimeout(() => ScrollTrigger.refresh(), 600);
         }}>Services</h4>
-        <Link href='/aboutus'>
+        <a href='/aboutus'>
           <h4 data-text="About Us">About Us</h4>
-        </Link>
+        </a>
       </div>
 
       <div
@@ -58,18 +58,18 @@ export default function Navbar() {
 
       {menuOpen && (
         <div className={styles.dropdownMenu}>
-          <Link href="/" passHref>
+          <a href="/" passHref>
             <h4 onClick={() => setMenuOpen(false)}>Homepage</h4>
-          </Link>
+          </a>
           <h4 style={{ cursor: 'pointer' }} onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}>Services</h4>
-          <Link href='/aboutus' passHref>
+          <a href='/aboutus' passHref>
             <h4 onClick={() => setMenuOpen(false)}>About Us</h4>
-          </Link>
+          </a>
         </div>
       )}
-      <Link href='/contact'>
+      <a href='/contact'>
         <button className={styles.navBtn}>Contact Us</button>
-      </Link>
+      </a>
     </nav>
   );
 }

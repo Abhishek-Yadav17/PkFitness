@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import styles from '../styles/Footer.module.scss';
 
 export default function Footer() {
@@ -18,26 +17,28 @@ export default function Footer() {
         <div className={styles.footerRight}>
           <div className={styles.pages}>
             <h2>Pages</h2>
-            <Link href="/" passHref>
+            <a href="/" passHref>
               <h4>Homepage</h4>
-            </Link>
-            <Link href="/contact">
+            </a>
+            <a href="/contact">
               <h4>Contact Us</h4>
-            </Link>
-            <Link href="/aboutus">
+            </a>
+            <a href="/aboutus">
               <h4>About Us</h4>
-            </Link>
+            </a>
           </div>
           <div className={styles.socialMedia}>
             <h2>Socail Media</h2>
-            <h4>Instagram</h4>
+            <a href='https://www.instagram.com/pkfitnessandnutritions?igsh=MTN1Z2c4NGRrMGh2NQ%3D%3D&utm_source=qr' target='_blank'>
+              <h4>Instagram</h4>
+            </a>
             <h4>LinkedIn</h4>
             <h4>Facebook</h4>
             <h4>Twitter</h4>
           </div>
-          <Link href='/contact'>
+          <a href="/contact">
             <button>Book a Call</button>
-          </Link>
+          </a>
         </div>
       </div>
     </footer>
