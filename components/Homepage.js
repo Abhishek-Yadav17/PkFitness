@@ -1,5 +1,5 @@
 import styles from '../styles/Homepage.module.scss';
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState } from 'react';
 import Footer from './Footer';
 import Navbar from '../components/Navbar';
 import gsap from 'gsap';
@@ -11,7 +11,6 @@ export default function Homepage() {
   const images = ['/bg1.webp', '/bg2.webp', '/bg3.webp', '/bg4.webp', '/bg5.webp'];
 
   const [bgIndex, setBgIndex] = useState(0);
-  const locoScrollRef = useRef(null);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -21,217 +20,228 @@ export default function Homepage() {
   }, []);
 
   useEffect(() => {
-    const isMobile = window.innerWidth <= 416;
 
-    if (isMobile) {
-      document.querySelectorAll('[data-scroll-speed]').forEach((el) => {
-        el.removeAttribute('data-scroll-speed');
-        el.removeAttribute('data-scroll');
-      });
-    }
+    if (window.innerWidth <= 416) return;
 
-    import('locomotive-scroll').then(({ default: LocomotiveScroll }) => {
-      const scrollEl = document.querySelector('[data-scroll-container]');
-      if (!scrollEl) return;
+    gsap.registerPlugin(ScrollTrigger);
 
-      const locoScroll = new LocomotiveScroll({
-        el: scrollEl,
-        smooth: true,
-        smartphone: { smooth: true },
-        tablet: { smooth: true },
-      });
+    gsap.fromTo(
+      `.${styles.tagline} h1 span`,
+      { y: 100, opacity: 0 },
+      { y: 0, opacity: 1, stagger: 0.2 }
+    );
 
-      locoScrollRef.current = locoScroll;
+    gsap.fromTo(
+      `.${styles.tagline} p span`,
+      { y: 100, opacity: 0 },
+      { y: 0, opacity: 1, stagger: 0.2, delay: 0.7 }
+    );
 
-      if (!isMobile) {
-        gsap.registerPlugin(ScrollTrigger);
+    gsap.fromTo(
+      `.${styles.tagline} button`,
+      { scale: 0.1, opacity: 0 },
+      { scale: 1, opacity: 1, duration: 1, delay: 0.2, ease: 'power3.out' }
+    );
 
-        ScrollTrigger.scrollerProxy(scrollEl, {
-          scrollTop(value) {
-            return arguments.length
-              ? locoScroll.scrollTo(value, { duration: 0, disableLerp: true })
-              : locoScroll.scroll.instance.scroll.y;
-          },
-          getBoundingClientRect() {
-            return {
-              top: 0,
-              left: 0,
-              width: window.innerWidth,
-              height: window.innerHeight,
-            };
-          },
-          pinType: getComputedStyle(scrollEl).transform !== 'none' ? 'transform' : 'fixed',
-        });
-
-        locoScroll.on('scroll', ScrollTrigger.update);
-        ScrollTrigger.defaults({ scroller: scrollEl });
-
-        gsap.fromTo(
-          `.${styles.tagline} h1 span`,
-          { y: 100, opacity: 0 },
-          { y: 0, opacity: 1, stagger: 0.2 }
-        );
-
-        gsap.fromTo(
-          `.${styles.tagline} p span`,
-          { y: 100, opacity: 0 },
-          { y: 0, opacity: 1, stagger: 0.2, delay: 0.7 }
-        );
-
-        gsap.fromTo(
-          `.${styles.tagline} button`,
-          { scale: 0.1, opacity: 0 },
-          { scale: 1, opacity: 1, duration: 1, delay: 0.2, ease: 'power3.out' }
-        );
-
-        gsap.fromTo(
-          `.${styles.rotated} h1:nth-child(1), .${styles.rotated} h1:nth-child(3)`,
-          { x: -400 },
-          {
-            x: 400,
-            opacity: 1,
-            scrollTrigger: {
-              trigger: `.${styles.aboutSection}`,
-              start: 'top 160%',
-              end: 'bottom 50%',
-              scrub: 2,
-            },
-          }
-        );
-
-        gsap.fromTo(
-          `.${styles.rotated} h1:nth-child(2)`,
-          { x: 400 },
-          {
-            x: -400,
-            opacity: 1,
-            scrollTrigger: {
-              trigger: `.${styles.aboutSection}`,
-              start: 'top 160%',
-              end: 'bottom 50%',
-              scrub: 2,
-            },
-          }
-        );
-
-        gsap.to(`.${styles.arrowPath}`, {
-          strokeDashoffset: 0,
-          stroke: '#c6ff4f',
-          scrollTrigger: {
-            trigger: `.${styles.getStarted}`,
-            start: 'top 70%',
-            end: 'bottom 40%',
-            scrub: 1,
-          },
-        });
-
-        gsap.fromTo(
-          `.${styles.left}`,
-          { x: -200, y: 200, opacity: 0 },
-          {
-            x: 0,
-            y: 0,
-            opacity: 1,
-            scrollTrigger: {
-              trigger: `.${styles.getStarted}`,
-              start: 'top 120%',
-              end: 'bottom 100%',
-              scrub: 1,
-            },
-          }
-        );
-
-        gsap.fromTo(
-          `.${styles.right}`,
-          { x: 200, y: -200, opacity: 0 },
-          {
-            x: 0,
-            y: 0,
-            opacity: 1,
-            scrollTrigger: {
-              trigger: `.${styles.getStarted}`,
-              start: 'top 140%',
-              end: 'bottom 100%',
-              scrub: 1,
-            },
-          }
-        );
-
-        gsap.fromTo(
-          `.${styles.servicesSection}>h1`,
-          { y: 100, scale: 0 },
-          {
-            y: 0,
-            opacity: 1,
-            scale: 1,
-            scrollTrigger: {
-              trigger: `.${styles.servicesSection}`,
-              start: 'top 160%',
-              end: 'bottom 50%',
-              scrub: 2,
-            },
-          }
-        );
-
-        gsap.fromTo(
-          `.${styles.card}:nth-child(1)`,
-          { x: -200, opacity: 0 },
-          {
-            x: 0,
-            opacity: 1,
-            duration: 1,
-            scrollTrigger: {
-              trigger: `.${styles.servicesSection}`,
-              start: 'top 200%',
-              end: 'bottom 100%',
-              scrub: 1,
-            },
-          }
-        );
-
-        gsap.fromTo(
-          `.${styles.featured}`,
-          { scale: 0.2, opacity: 0 },
-          {
-            scale: 1.1,
-            opacity: 1,
-            duration: 1,
-            scrollTrigger: {
-              trigger: `.${styles.servicesSection}`,
-              start: 'top 200%',
-              end: 'bottom 100%',
-              scrub: 1,
-            },
-          }
-        );
-
-        gsap.fromTo(
-          `.${styles.card}:nth-child(3)`,
-          { x: 200, opacity: 0 },
-          {
-            x: 0,
-            opacity: 1,
-            duration: 1,
-            scrollTrigger: {
-              trigger: `.${styles.servicesSection}`,
-              start: 'top 200%',
-              end: 'bottom 100%',
-              scrub: 1,
-            },
-          }
-        );
+    gsap.fromTo(
+      `.${styles.rotated} h1:nth-child(1), .${styles.rotated} h1:nth-child(3)`,
+      { x: -400 },
+      {
+        x: 400,
+        opacity: 1,
+        scrollTrigger: {
+          trigger: `.${styles.aboutSection}`,
+          start: 'top 160%',
+          end: 'bottom 50%',
+          scrub: 2,
+        },
       }
+    );
 
-      return () => locoScroll && locoScroll.destroy();
+    gsap.fromTo(
+      `.${styles.rotated} h1:nth-child(2)`,
+      { x: 400 },
+      {
+        x: -400,
+        opacity: 1,
+        scrollTrigger: {
+          trigger: `.${styles.aboutDetails}`,
+          start: 'top 160%',
+          end: 'bottom 50%',
+          scrub: 2,
+        },
+      }
+    );
+
+    gsap.utils.toArray(`.${styles.details}`).forEach((detail, i) => {
+      const img = detail.querySelector('img');
+      const span = detail.querySelector(`.${styles.imageLabel}`);
+      const textElements = detail.querySelectorAll(`.${styles.detailsInner} h2, .${styles.detailsInner} h4, .${styles.detailsInner} h5, .${styles.detailsInner} ul`);
+
+      gsap.fromTo(
+        img,
+        { x: i % 2 === 0 ? -150 : 150, opacity: 0 },
+        {
+          x: 0,
+          opacity: 1,
+          scrollTrigger: {
+            trigger: detail,
+            start: 'top 160%',
+            scrub: 1
+          },
+          duration: 1,
+          ease: 'power3.out',
+        }
+      );
+
+      gsap.fromTo(
+        span,
+        { y: 100, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          scrollTrigger: {
+            trigger: detail,
+            start: 'top 160%',
+            scrub: 1
+          },
+          duration: 1,
+          delay: 0.2,
+          ease: 'power3.out',
+        }
+      );
+
+      gsap.fromTo(
+        textElements,
+        { y: 100, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          stagger: 0.15,
+          scrollTrigger: {
+            trigger: detail,
+            start: 'top 90%',
+          },
+          duration: 1,
+          ease: 'power3.out',
+        }
+      );
     });
+
+    gsap.to(`.${styles.arrowPath}`, {
+      strokeDashoffset: 0,
+      stroke: '#c6ff4f',
+      scrollTrigger: {
+        trigger: `.${styles.getStarted}`,
+        start: 'top 70%',
+        end: 'bottom 40%',
+        scrub: 1,
+      },
+    });
+
+    gsap.fromTo(
+      `.${styles.left}`,
+      { x: -200, y: 200, opacity: 0 },
+      {
+        x: 0,
+        y: 0,
+        opacity: 1,
+        scrollTrigger: {
+          trigger: `.${styles.getStarted}`,
+          start: 'top 120%',
+          end: 'bottom 100%',
+          scrub: 1,
+        },
+      }
+    );
+
+    gsap.fromTo(
+      `.${styles.right}`,
+      { x: 200, y: -200, opacity: 0 },
+      {
+        x: 0,
+        y: 0,
+        opacity: 1,
+        scrollTrigger: {
+          trigger: `.${styles.getStarted}`,
+          start: 'top 140%',
+          end: 'bottom 100%',
+          scrub: 1,
+        },
+      }
+    );
+
+    gsap.fromTo(
+      `.${styles.servicesSection}>h1`,
+      { y: 100, scale: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        scale: 1,
+        scrollTrigger: {
+          trigger: `.${styles.servicesSection}`,
+          start: 'top 160%',
+          end: 'bottom 50%',
+          scrub: 2,
+        },
+      }
+    );
+
+    gsap.fromTo(
+      `.${styles.card}:nth-child(1)`,
+      { x: -200, opacity: 0 },
+      {
+        x: 0,
+        opacity: 1,
+        duration: 1,
+        scrollTrigger: {
+          trigger: `.${styles.servicesSection}`,
+          start: 'top 200%',
+          end: 'bottom 100%',
+          scrub: 1,
+        },
+      }
+    );
+
+    gsap.fromTo(
+      `.${styles.featured}`,
+      { scale: 0.2, opacity: 0 },
+      {
+        scale: 1.1,
+        opacity: 1,
+        duration: 1,
+        scrollTrigger: {
+          trigger: `.${styles.servicesSection}`,
+          start: 'top 200%',
+          end: 'bottom 100%',
+          scrub: 1,
+        },
+      }
+    );
+
+    gsap.fromTo(
+      `.${styles.card}:nth-child(3)`,
+      { x: 200, opacity: 0 },
+      {
+        x: 0,
+        opacity: 1,
+        duration: 1,
+        scrollTrigger: {
+          trigger: `.${styles.servicesSection}`,
+          start: 'top 200%',
+          end: 'bottom 100%',
+          scrub: 1,
+        },
+      }
+    );
   }, []);
 
   return (
     <>
-      <section className={styles.homepage} data-scroll-section style={{ backgroundImage: `url(${images[bgIndex]})` }}>
-        <Navbar locoScroll={locoScrollRef.current} />
+      <section className={styles.homepage} style={{ backgroundImage: `url(${images[bgIndex]})` }}>
+        <Navbar />
         <div className={styles.hero}>
-          <div className={styles.tagline} data-scroll data-scroll-speed="2">
+          <div className={styles.tagline}  >
             <h1><span>Your Goals Aren&apos;t Out of Reach—</span><br />
               <span>You Just Haven&apos;t Trained Here Yet.</span><br />
               <span>This is Where Your Stronger Self Begins.</span>
@@ -245,7 +255,7 @@ export default function Homepage() {
           </div>
         </div>
       </section>
-      <section className={styles.aboutSection} data-scroll-section>
+      <section className={styles.aboutSection}>
         <div className={styles.rotated}>
           <h1>MORE ABOUT</h1>
           <h1>PK FITNESS</h1>
@@ -254,8 +264,8 @@ export default function Homepage() {
         <div id="services" className={styles.aboutDetails}>
           <div className={styles.details}>
             <img src='/about1.webp' alt='details' loading="lazy" />
-            <span className={styles.imageLabel} data-scroll data-scroll-speed="2">01</span>
-            <div className={styles.detailsInner} data-scroll data-scroll-speed="4">
+            <span className={styles.imageLabel}  >01</span>
+            <div className={styles.detailsInner}  >
               <h2>💻 Online Coaching (Remote)</h2>
               <h4>Perfect for busy professionals and remote workers.</h4>
               <h5>If you&apos;re tied to a desk or have a packed schedule, we&apos;ve got your back. Our online coaching is flexible, structured, and tailored just for you.</h5>
@@ -268,8 +278,8 @@ export default function Homepage() {
             </div>
           </div>
           <div className={styles.details}>
-            <span className={styles.imageLabel} data-scroll data-scroll-speed="2">02</span>
-            <div className={styles.detailsInner} data-scroll data-scroll-speed="4">
+            <span className={styles.imageLabel}  >02</span>
+            <div className={styles.detailsInner}  >
               <h2>🏋‍♂ Offline Personal Training (We Come to You)</h2>
               <h4>Don&apos;t want to switch gyms? No problem.</h4>
               <h5>Whether you&apos;re already training somewhere or need help picking the right place—we&apos;ll meet you where you are.</h5>
@@ -284,8 +294,8 @@ export default function Homepage() {
           </div>
           <div className={styles.details}>
             <img src='/about3.webp' alt='details' loading="lazy" />
-            <span className={styles.imageLabel} data-scroll data-scroll-speed="2">03</span>
-            <div className={styles.detailsInner} data-scroll data-scroll-speed="4">
+            <span className={styles.imageLabel}  >03</span>
+            <div className={styles.detailsInner}  >
               <h2>💪 Bodybuilding Prep (Stage-Ready Coaching)</h2>
               <h4>From first-timers to seasoned athletes—this is your spotlight.</h4>
               <h5>Getting stage-ready isn&apos;t just about lifting—it&apos;s about strategy, structure, and confidence. We&apos;ll help you build the body and the mindset.</h5>
@@ -298,8 +308,8 @@ export default function Homepage() {
             </div>
           </div>
           <div className={styles.details}>
-            <span className={styles.imageLabel} data-scroll data-scroll-speed="2">04</span>
-            <div className={styles.detailsInner} data-scroll data-scroll-speed="4">
+            <span className={styles.imageLabel}  >04</span>
+            <div className={styles.detailsInner}  >
               <h2>🏠 Home & Society Gym Training</h2>
               <h4>Why go to the gym when the gym can come to you?</h4>
               <h5>Train in the comfort of your own space, without compromising on results.</h5>
@@ -314,8 +324,8 @@ export default function Homepage() {
           </div>
           <div className={styles.details}>
             <img src='/about5.webp' alt='details' loading="lazy" />
-            <span className={styles.imageLabel} data-scroll data-scroll-speed="2">05</span>
-            <div className={styles.detailsInner} data-scroll data-scroll-speed="4">
+            <span className={styles.imageLabel}  >05</span>
+            <div className={styles.detailsInner}  >
               <h2>🥗 Nutrition Guidance (Included in All Plans)</h2>
               <h4>No crash diets, no cookie-cutter meal plans. Just food that fits your life.</h4>
               <h5>We&apos;ll help you eat better—not less—with plans designed around your preferences, goals, and lifestyle.</h5>
@@ -349,7 +359,7 @@ export default function Homepage() {
           </div>
         </div>
       </section>
-      <section className={styles.servicesSection} data-scroll-section>
+      <section className={styles.servicesSection}>
         <h1>MEMBERSHIPS</h1>
         <div className={styles.plans}>
           <div className={styles.card}>

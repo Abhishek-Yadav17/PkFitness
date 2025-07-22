@@ -3,101 +3,95 @@ import Navbar from './Navbar';
 import Footer from './Footer';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function ContactUs() {
 
-  useEffect(() => {
-    const isMobile = window.innerWidth <= 416;
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: '',
+    message: '',
+  });
 
-    import('locomotive-scroll').then(({ default: LocomotiveScroll }) => {
-      const scrollEl = document.querySelector('[data-scroll-section]');
-      if (!scrollEl) return;
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
-      const locoScroll = new LocomotiveScroll({
-        el: scrollEl,
-        smooth: true,
-        smartphone: { smooth: true },
-        tablet: { smooth: true },
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await fetch('http://localhost:5000/send', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
       });
 
-      if (!isMobile) {
-        gsap.registerPlugin(ScrollTrigger);
+      const data = await res.json();
+      alert(data.message);
+    } catch (err) {
+      alert('Failed to send message');
+    }
+  };
 
-        ScrollTrigger.scrollerProxy(scrollEl, {
-          scrollTop(value) {
-            return arguments.length
-              ? locoScroll.scrollTo(value, { duration: 0, disableLerp: true })
-              : locoScroll.scroll.instance.scroll.y;
-          },
-          getBoundingClientRect() {
-            return {
-              top: 0,
-              left: 0,
-              width: window.innerWidth,
-              height: window.innerHeight,
-            };
-          },
-          pinType: getComputedStyle(scrollEl).transform !== 'none' ? 'transform' : 'fixed',
-        });
 
-        locoScroll.on('scroll', ScrollTrigger.update);
-        ScrollTrigger.defaults({ scroller: scrollEl });
+  useEffect(() => {
 
-        gsap.fromTo(
-          `.${styles.contactContainer}>h1`,
-          { y: 100, opacity: 0 },
-          {
-            y: 0,
-            opacity: 1,
-            duration: 1,
-            ease: 'power3.out',
-          }
-        );
+    if (window.innerWidth <= 416) return;
 
-        gsap.fromTo(
-          `.${styles.blueBoxes} p`,
-          { y: 100, opacity: 0 },
-          {
-            y: 0,
-            opacity: 1,
-            duration: 0.8,
-            ease: 'power3.out',
-            delay: 0.3,
-          }
-        );
+    gsap.registerPlugin(ScrollTrigger);
 
-        gsap.fromTo(
-          `.${styles.formLeft}`,
-          { x: -100, opacity: 0 },
-          {
-            x: 0,
-            opacity: 1,
-            duration: 0.8,
-            ease: 'power3.out',
-            delay: 0.3,
-          }
-        );
-
-        gsap.fromTo(
-          `.${styles.formRight}`,
-          { x: 100, opacity: 0 },
-          {
-            x: 0,
-            opacity: 1,
-            duration: 0.8,
-            ease: 'power3.out',
-            delay: 0.3,
-          }
-        );
+    gsap.fromTo(
+      `.${styles.contactContainer}>h1`,
+      { y: 100, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 1,
+        ease: 'power3.out',
       }
+    );
 
-      return () => locoScroll && locoScroll.destroy();
-    });
+    gsap.fromTo(
+      `.${styles.blueBoxes} p`,
+      { y: 100, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 0.8,
+        ease: 'power3.out',
+        delay: 0.3,
+      }
+    );
+
+    gsap.fromTo(
+      `.${styles.formLeft}`,
+      { x: -100, opacity: 0 },
+      {
+        x: 0,
+        opacity: 1,
+        duration: 0.8,
+        ease: 'power3.out',
+        delay: 0.3,
+      }
+    );
+
+    gsap.fromTo(
+      `.${styles.formRight}`,
+      { x: 100, opacity: 0 },
+      {
+        x: 0,
+        opacity: 1,
+        duration: 0.8,
+        ease: 'power3.out',
+        delay: 0.3,
+      }
+    );
   }, []);
 
   return (
-    <section className={styles.contactPage} data-scroll-section>
+    <section className={styles.contactPage}>
       <Navbar />
       <div className={styles.contactContainer}>
         <h1>Thinking about getting started but not sure where to begin?</h1>
@@ -146,34 +140,34 @@ export default function ContactUs() {
             </div>
           </div>
           <div className={styles.formRight}>
-            <form className={styles.form}>
+            <form className={styles.form} onSubmit={handleSubmit}>
               <div className={styles.row}>
                 <div className={styles.inputGroup}>
                   <label>First Name</label>
-                  <input type="text" placeholder="First Name" />
+                  <input type="text" placeholder="First Name" name="firstName" value={formData.firstName} onChange={handleChange} />
                 </div>
                 <div className={styles.inputGroup}>
                   <label>Last Name</label>
-                  <input type="text" placeholder="Last Name" />
+                  <input type="text" placeholder="Last Name" name="lastName" value={formData.lastName} onChange={handleChange} />
                 </div>
               </div>
               <div className={styles.row}>
                 <div className={styles.inputGroup}>
                   <label>Email</label>
-                  <input type="email" placeholder="Email" />
+                  <input type="email" placeholder="Email" name="email" value={formData.email} onChange={handleChange} />
                 </div>
                 <div className={styles.inputGroup}>
                   <label>Phone Number</label>
-                  <input type="tel" placeholder="Phone Number" />
+                  <input type="tel" placeholder="Phone Number" name="phone" value={formData.phone} onChange={handleChange} />
                 </div>
               </div>
               <div className={styles.inputGroup}>
                 <label>Subject</label>
-                <input type="text" placeholder="Subject" />
+                <input type="text" placeholder="Subject" name="subject" value={formData.subject} onChange={handleChange} />
               </div>
               <div className={styles.inputGroup}>
                 <label>Message</label>
-                <textarea placeholder="Message"></textarea>
+                <textarea placeholder="Message" name="message" value={formData.message} onChange={handleChange}></textarea>
               </div>
               <button type="submit">Send Message</button>
             </form>

@@ -3,8 +3,10 @@ import { useEffect, useState } from 'react';
 import gsap from 'gsap';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+gsap.registerPlugin(ScrollTrigger);
 
-export default function Navbar({ locoScroll }) {
+export default function Navbar() {
   const router = useRouter();
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -23,17 +25,6 @@ export default function Navbar({ locoScroll }) {
     );
   }, []);
 
-  const scrollToServices = () => {
-    if (router.pathname === '/' && locoScroll) {
-      locoScroll.scrollTo('#services', {
-        offset: 0,
-        duration: 1000,
-        easing: [0.25, 0.0, 0.35, 1.0],
-      });
-      setMenuOpen(false);
-    }
-  };
-
   useEffect(() => {
     setMenuOpen(false);
   }, [router.pathname]);
@@ -42,13 +33,16 @@ export default function Navbar({ locoScroll }) {
     <nav className={styles.nav}>
       <h1>PK Fitness & Nutritions</h1>
 
-      <img src='pkfitnesslogo.jpg' alt='logo'/>
+      <img src='pkfitnesslogo.jpg' alt='logo' />
 
       <div className={styles.navmid}>
         <Link href="/" passHref>
           <h4 data-text="Homepage">Homepage</h4>
         </Link>
-        <h4 data-text="Services" style={{ cursor: 'pointer' }} onClick={scrollToServices}>Services</h4>
+        <h4 data-text="Services" style={{ cursor: 'pointer' }} onClick={() => {
+          document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' });
+          setTimeout(() => ScrollTrigger.refresh(), 600);
+        }}>Services</h4>
         <Link href='/aboutus'>
           <h4 data-text="About Us">About Us</h4>
         </Link>
@@ -67,7 +61,7 @@ export default function Navbar({ locoScroll }) {
           <Link href="/" passHref>
             <h4 onClick={() => setMenuOpen(false)}>Homepage</h4>
           </Link>
-          <h4 onClick={scrollToServices} style={{ cursor: 'pointer' }}>Services</h4>
+          <h4 style={{ cursor: 'pointer' }} onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}>Services</h4>
           <Link href='/aboutus' passHref>
             <h4 onClick={() => setMenuOpen(false)}>About Us</h4>
           </Link>

@@ -14,14 +14,33 @@
   box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
   height: 100%;
-  overflow: hidden;
+  scroll-behavior: smooth;
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
 }
 
-[data-scroll-container] {
-  height: 100%;
-  overflow: hidden;
+::-webkit-scrollbar {
+  width: 8px;
+  background: #111;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #c6ff4f;
+  border-radius: 0px;
+}
+
+@media (max-width: 416px) {
+  ::-webkit-scrollbar {
+    width: 3px;
+    background: #111;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: #c6ff4f;
+    border-radius: 0px;
+  }
 }

@@ -8,6 +8,8 @@
     background-position: center;
     position: relative;
     transition: background-image ease 2s;
+    position: relative;
+    z-index: 1;
 
     &::before {
         content: '';
@@ -142,6 +144,10 @@
                 transform: rotate(6deg);
                 transform-origin: bottom;
                 color: #F2FFC4;
+
+                @media (max-width: 416px) {
+                    transform: rotate(12deg);
+                }
             }
 
             &:nth-child(2) {
@@ -152,6 +158,10 @@
                 transform: rotate(-6deg);
                 transform-origin: bottom;
                 color: #F2FFC4;
+
+                @media (max-width: 416px) {
+                    transform: rotate(-12deg);
+                }
             }
         }
     }
@@ -203,9 +213,10 @@
                 position: absolute;
                 font-size: 10vw;
                 left: 27%;
-                top: -1%;
+                top: -6%;
                 -webkit-text-stroke: 1px white;
                 color: transparent;
+                z-index: 2;
 
                 @media (max-width: 416px) {
                     left: 10%;
