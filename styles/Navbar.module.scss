@@ -40,6 +40,7 @@
 
     a {
       text-decoration: none;
+      color: #fff;
     }
 
     h4 {
@@ -103,14 +104,23 @@
       position: absolute;
       top: 70%;
       right: 27%;
-      margin-top: 0.5vw;
+      margin-top: 1vw;
       background: #222;
-      padding: 2vw 3vw;
+      padding: 4vw 3vw;
       border-radius: 8px;
       display: flex;
       flex-direction: column;
       gap: 1vw;
       z-index: 999;
+
+      h4 {
+        margin-bottom: 2vw;
+      }
+
+      a {
+        text-decoration: none;
+        color: #fff;
+      }
     }
   }
 
