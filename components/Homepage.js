@@ -1,415 +1,70 @@
 import styles from '../styles/Homepage.module.scss';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import Footer from './Footer';
-import Navbar from '../components/Navbar';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import Link from 'next/link';
+import AboutDetails from './AboutDetails';
+import HeroSection from './Hero';
+import GetStarted from './GetStarted';
+import Memberships from './Memberships';
 
 export default function Homepage() {
 
-  const images = ['/bg1.webp', '/bg2.webp', '/bg3.webp', '/bg4.webp', '/bg5.webp'];
-
-  const [bgIndex, setBgIndex] = useState(0);
-
   useEffect(() => {
-    const interval = setInterval(() => {
-      setBgIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 4000);
-    return () => clearInterval(interval);
+    if (window.innerWidth <= 767) return;
+
+    const loadGsapAnimations = async () => {
+      const gsap = (await import('gsap')).default;
+      const { ScrollTrigger } = await import('gsap/ScrollTrigger');
+      gsap.registerPlugin(ScrollTrigger);
+
+      gsap.fromTo(
+        `.${styles.rotated} h1:nth-child(1), .${styles.rotated} h1:nth-child(3)`,
+        { x: -400 },
+        {
+          x: 400,
+          opacity: 1,
+          scrollTrigger: {
+            trigger: `.${styles.aboutSection}`,
+            start: 'top 160%',
+            end: 'bottom 50%',
+            scrub: 2,
+          },
+        }
+      );
+
+      gsap.fromTo(
+        `.${styles.rotated} h1:nth-child(2)`,
+        { x: 400 },
+        {
+          x: -400,
+          opacity: 1,
+          scrollTrigger: {
+            trigger: `.${styles.aboutSection}`,
+            start: 'top 160%',
+            end: 'bottom 50%',
+            scrub: 2,
+          },
+        }
+      );
+    };
+
+    loadGsapAnimations();
   }, []);
 
-  useEffect(() => {
-
-    if (window.innerWidth <= 416) return;
-
-    gsap.registerPlugin(ScrollTrigger);
-
-    gsap.fromTo(
-      `.${styles.tagline} h1 span`,
-      { y: 100, opacity: 0 },
-      { y: 0, opacity: 1, stagger: 0.2 }
-    );
-
-    gsap.fromTo(
-      `.${styles.tagline} p span`,
-      { y: 100, opacity: 0 },
-      { y: 0, opacity: 1, stagger: 0.2, delay: 0.7 }
-    );
-
-    gsap.fromTo(
-      `.${styles.tagline} button`,
-      { scale: 0.1, opacity: 0 },
-      { scale: 1, opacity: 1, duration: 1, delay: 0.2, ease: 'power3.out' }
-    );
-
-    gsap.fromTo(
-      `.${styles.rotated} h1:nth-child(1), .${styles.rotated} h1:nth-child(3)`,
-      { x: -400 },
-      {
-        x: 400,
-        opacity: 1,
-        scrollTrigger: {
-          trigger: `.${styles.aboutSection}`,
-          start: 'top 160%',
-          end: 'bottom 50%',
-          scrub: 2,
-        },
-      }
-    );
-
-    gsap.fromTo(
-      `.${styles.rotated} h1:nth-child(2)`,
-      { x: 400 },
-      {
-        x: -400,
-        opacity: 1,
-        scrollTrigger: {
-          trigger: `.${styles.aboutDetails}`,
-          start: 'top 160%',
-          end: 'bottom 50%',
-          scrub: 2,
-        },
-      }
-    );
-
-    gsap.utils.toArray(`.${styles.details}`).forEach((detail, i) => {
-      const img = detail.querySelector('img');
-      const span = detail.querySelector(`.${styles.imageLabel}`);
-      const textElements = detail.querySelectorAll(`.${styles.detailsInner} h2, .${styles.detailsInner} h4, .${styles.detailsInner} h5, .${styles.detailsInner} ul`);
-
-      gsap.fromTo(
-        img,
-        { x: i % 2 === 0 ? -150 : 150, opacity: 0 },
-        {
-          x: 0,
-          opacity: 1,
-          scrollTrigger: {
-            trigger: detail,
-            start: 'top 160%',
-            scrub: 1
-          },
-          duration: 1,
-          ease: 'power3.out',
-        }
-      );
-
-      gsap.fromTo(
-        span,
-        { y: 100, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          scrollTrigger: {
-            trigger: detail,
-            start: 'top 160%',
-            scrub: 1
-          },
-          duration: 1,
-          delay: 0.2,
-          ease: 'power3.out',
-        }
-      );
-
-      gsap.fromTo(
-        textElements,
-        { y: 100, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          stagger: 0.15,
-          scrollTrigger: {
-            trigger: detail,
-            start: 'top 90%',
-          },
-          duration: 1,
-          ease: 'power3.out',
-        }
-      );
-    });
-
-    gsap.to(`.${styles.arrowPath}`, {
-      strokeDashoffset: 0,
-      stroke: '#c6ff4f',
-      scrollTrigger: {
-        trigger: `.${styles.getStarted}`,
-        start: 'top 70%',
-        end: 'bottom 40%',
-        scrub: 1,
-      },
-    });
-
-    gsap.fromTo(
-      `.${styles.left}`,
-      { x: -200, y: 200, opacity: 0 },
-      {
-        x: 0,
-        y: 0,
-        opacity: 1,
-        scrollTrigger: {
-          trigger: `.${styles.getStarted}`,
-          start: 'top 120%',
-          end: 'bottom 100%',
-          scrub: 1,
-        },
-      }
-    );
-
-    gsap.fromTo(
-      `.${styles.right}`,
-      { x: 200, y: -200, opacity: 0 },
-      {
-        x: 0,
-        y: 0,
-        opacity: 1,
-        scrollTrigger: {
-          trigger: `.${styles.getStarted}`,
-          start: 'top 140%',
-          end: 'bottom 100%',
-          scrub: 1,
-        },
-      }
-    );
-
-    gsap.fromTo(
-      `.${styles.servicesSection}>h1`,
-      { y: 100, scale: 0 },
-      {
-        y: 0,
-        opacity: 1,
-        scale: 1,
-        scrollTrigger: {
-          trigger: `.${styles.servicesSection}`,
-          start: 'top 160%',
-          end: 'bottom 50%',
-          scrub: 2,
-        },
-      }
-    );
-
-    gsap.fromTo(
-      `.${styles.card}:nth-child(1)`,
-      { x: -200, opacity: 0 },
-      {
-        x: 0,
-        opacity: 1,
-        duration: 1,
-        scrollTrigger: {
-          trigger: `.${styles.servicesSection}`,
-          start: 'top 200%',
-          end: 'bottom 100%',
-          scrub: 1,
-        },
-      }
-    );
-
-    gsap.fromTo(
-      `.${styles.featured}`,
-      { scale: 0.2, opacity: 0 },
-      {
-        scale: 1.1,
-        opacity: 1,
-        duration: 1,
-        scrollTrigger: {
-          trigger: `.${styles.servicesSection}`,
-          start: 'top 200%',
-          end: 'bottom 100%',
-          scrub: 1,
-        },
-      }
-    );
-
-    gsap.fromTo(
-      `.${styles.card}:nth-child(3)`,
-      { x: 200, opacity: 0 },
-      {
-        x: 0,
-        opacity: 1,
-        duration: 1,
-        scrollTrigger: {
-          trigger: `.${styles.servicesSection}`,
-          start: 'top 200%',
-          end: 'bottom 100%',
-          scrub: 1,
-        },
-      }
-    );
-  }, []);
 
   return (
     <>
-      <section className={styles.homepage} style={{ backgroundImage: `url(${images[bgIndex]})` }}>
-        <Navbar />
-        <div className={styles.hero}>
-          <div className={styles.tagline}  >
-            <h1><span>Your Goals Aren&apos;t Out of Reach—</span><br />
-              <span>You Just Haven&apos;t Trained Here Yet.</span><br />
-              <span>This is Where Your Stronger Self Begins.</span>
-            </h1>
-            <p>
-              <span>At PK Fitness, we go beyond the basics. Experience personalized</span> <span>training programs, state-of-the-art equipment, and a supportive</span> <span>community committed to real, lasting results.</span>
-            </p>
-            <Link href="/contact">
-              <button>Start your journey today.</button>
-            </Link>
-          </div>
-        </div>
-      </section>
+      <HeroSection />
       <section className={styles.aboutSection}>
         <div className={styles.rotated}>
           <h1>MORE ABOUT</h1>
           <h1>PK FITNESS</h1>
           <h1>& NUTRITIONS</h1>
         </div>
-        <div id="services" className={styles.aboutDetails}>
-          <div className={styles.details}>
-            <img src='/about1.webp' alt='details' loading="lazy" />
-            <span className={styles.imageLabel}  >01</span>
-            <div className={styles.detailsInner}  >
-              <h2>💻 Online Coaching (Remote)</h2>
-              <h4>Perfect for busy professionals and remote workers.</h4>
-              <h5>If you&apos;re tied to a desk or have a packed schedule, we&apos;ve got your back. Our online coaching is flexible, structured, and tailored just for you.</h5>
-              <ul>
-                <li><i class="ri-checkbox-circle-line"></i>Weekly workout plans that evolve with your progress</li>
-                <li><i class="ri-checkbox-circle-line"></i>1-on-1 check-ins to keep you on track</li>
-                <li><i class="ri-checkbox-circle-line"></i>Easy-to-follow nutrition guidance</li>
-                <li><i class="ri-checkbox-circle-line"></i>Delivered via WhatsApp, Google Sheets, or Trainerize—whatever works best for you.</li>
-              </ul>
-            </div>
-          </div>
-          <div className={styles.details}>
-            <span className={styles.imageLabel}  >02</span>
-            <div className={styles.detailsInner}  >
-              <h2>🏋‍♂ Offline Personal Training (We Come to You)</h2>
-              <h4>Don&apos;t want to switch gyms? No problem.</h4>
-              <h5>Whether you&apos;re already training somewhere or need help picking the right place—we&apos;ll meet you where you are.</h5>
-              <ul>
-                <li><i class="ri-checkbox-circle-line"></i>Personalized sessions at your gym or one nearby.</li>
-                <li><i class="ri-checkbox-circle-line"></i>Flexible plans: 2, 3, or 5 sessions a week.</li>
-                <li><i class="ri-checkbox-circle-line"></i>Face-to-face coaching + full nutrition support.</li>
-                <li><i class="ri-checkbox-circle-line"></i>You show up—we&apos;ll handle the rest.</li>
-              </ul>
-            </div>
-            <img src='/about2.webp' alt='details' loading="lazy" />
-          </div>
-          <div className={styles.details}>
-            <img src='/about3.webp' alt='details' loading="lazy" />
-            <span className={styles.imageLabel}  >03</span>
-            <div className={styles.detailsInner}  >
-              <h2>💪 Bodybuilding Prep (Stage-Ready Coaching)</h2>
-              <h4>From first-timers to seasoned athletes—this is your spotlight.</h4>
-              <h5>Getting stage-ready isn&apos;t just about lifting—it&apos;s about strategy, structure, and confidence. We&apos;ll help you build the body and the mindset.</h5>
-              <ul>
-                <li><i class="ri-checkbox-circle-line"></i>Full prep coaching: workouts, diet, posing, and peak week.</li>
-                <li><i class="ri-checkbox-circle-line"></i>Online and offline options for every lifestyle.</li>
-                <li><i class="ri-checkbox-circle-line"></i>Proven methods, personalized to your body.</li>
-                <li><i class="ri-checkbox-circle-line"></i>Built for results—and built around you.</li>
-              </ul>
-            </div>
-          </div>
-          <div className={styles.details}>
-            <span className={styles.imageLabel}  >04</span>
-            <div className={styles.detailsInner}  >
-              <h2>🏠 Home & Society Gym Training</h2>
-              <h4>Why go to the gym when the gym can come to you?</h4>
-              <h5>Train in the comfort of your own space, without compromising on results.</h5>
-              <ul>
-                <li><i class="ri-checkbox-circle-line"></i>1-on-1 personal training at your home or society gym.</li>
-                <li><i class="ri-checkbox-circle-line"></i>No commute, no crowds—just convenience.</li>
-                <li><i class="ri-checkbox-circle-line"></i>Custom workouts + continuous nutrition support.</li>
-                <li><i class="ri-checkbox-circle-line"></i>Perfect for beginners, parents, and busy professionals.</li>
-              </ul>
-            </div>
-            <img src='/about4.webp' alt='details' loading="lazy" />
-          </div>
-          <div className={styles.details}>
-            <img src='/about5.webp' alt='details' loading="lazy" />
-            <span className={styles.imageLabel}  >05</span>
-            <div className={styles.detailsInner}  >
-              <h2>🥗 Nutrition Guidance (Included in All Plans)</h2>
-              <h4>No crash diets, no cookie-cutter meal plans. Just food that fits your life.</h4>
-              <h5>We&apos;ll help you eat better—not less—with plans designed around your preferences, goals, and lifestyle.</h5>
-              <ul>
-                <li><i class="ri-checkbox-circle-line"></i>Flexible meal plans tailored to you.</li>
-                <li><i class="ri-checkbox-circle-line"></i>Ongoing tweaks based on your progress.</li>
-                <li><i class="ri-checkbox-circle-line"></i>Simple, sustainable habits that stick.</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div className={styles.getStarted}>
-          <div className={styles.left}>
-            <h2>🔥Let&apos;s Get You Started</h2>
-            <h2>You don&apos;t need to be “fit” to start—you just need to start.</h2>
-            <h2>At PK Fitness and Nutritions, we&apos;re here to support your journey, your way.</h2>
-          </div>
-          <div className={styles.arrowWrapper}>
-            <svg viewBox="0 0 200 100" className={styles.curvedArrow}>
-              <defs>
-                <marker id="arrowhead" markerWidth="9" markerHeight="6" refX="5" refY="3" orient="auto">
-                  <polygon points="0 0, 6 3, 0 6" fill="#444" />
-                </marker>
-              </defs>
-              <path d="M1,50 Q110,10 180,40" className={styles.arrowPath} marker-end="url(#arrowhead)" />
-            </svg>
-          </div>
-          <div className={styles.right}>
-            <h3>📲 Book a free consultation today</h3>
-            <h3>Let&apos;s build a plan that fits you—not the other way around.</h3>
-          </div>
-        </div>
+        <AboutDetails />
+        <GetStarted />
       </section>
-      <section className={styles.servicesSection}>
-        <h1>MEMBERSHIPS</h1>
-        <div className={styles.plans}>
-          <div className={styles.card}>
-            <div className={styles.planDetails}>
-              <h2>Plan 1</h2>
-              <img src='/plan2.webp' alt='plan1' />
-              <h3>Monthly</h3>
-            </div>
-            <div className={styles.planList}>
-              <h4><i class="ri-check-line"></i>12 Classes Per Month</h4>
-              <h4><i class="ri-check-line"></i>3 Classes Per Week</h4>
-              <h4><i class="ri-check-line"></i>No Joining Fees</h4>
-            </div>
-            <Link href='/contact'>
-              <button >JOIN NOW</button>
-            </Link>
-          </div>
-          <div className={`${styles.card} ${styles.featured}`}>
-            <div className={styles.planDetails}>
-              <h2>Plan 3</h2>
-              <img src='/plan2.webp' alt='plan1' />
-              <h3>Half Yearly</h3>
-            </div>
-            <div className={styles.planList}>
-              <h4><i class="ri-check-line"></i>12 Classes Per Month</h4>
-              <h4><i class="ri-check-line"></i>3 Classes Per Week</h4>
-              <h4><i class="ri-check-line"></i>No Joining Fees</h4>
-            </div>
-            <Link href='/contact'>
-              <button >JOIN NOW</button>
-            </Link>
-          </div>
-          <div className={styles.card}>
-            <div className={styles.planDetails}>
-              <h2>Plan 2</h2>
-              <img src='/plan2.webp' alt='plan1' />
-              <h3>Quaterly</h3>
-            </div>
-            <div className={styles.planList}>
-              <h4><i class="ri-check-line"></i>12 Classes Per Month</h4>
-              <h4><i class="ri-check-line"></i>3 Classes Per Week</h4>
-              <h4><i class="ri-check-line"></i>No Joining Fees</h4>
-            </div>
-            <Link href='/contact'>
-              <button >JOIN NOW</button>
-            </Link>
-          </div>
-        </div>
-        <Footer />
-      </section>
+      <Memberships />
+      <Footer />
     </>
   );
 }

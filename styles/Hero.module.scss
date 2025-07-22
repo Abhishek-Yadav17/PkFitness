@@ -1,0 +1,123 @@
+.heroSection {
+    min-height: 100vh;
+    width: 100%;
+    background: #0A0A0A;
+    color: #fff;
+    font-family: NoiTesk;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+
+    .bgImage {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -2;
+        transition: opacity 1s ease;
+    }
+
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: -1;
+    }
+
+    .hero {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        padding: 2vw 0 0 6vw;
+        height: calc(100vh - 6vw);
+
+        @media (max-width: 768px) {
+            padding: 3vw 4vw;
+        }
+
+        .tagline {
+            width: 60%;
+            height: fit-content;
+            align-self: flex-start;
+            margin-top: 3vw;
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            flex-direction: column;
+            gap: 2vw;
+
+            @media (max-width: 768px) {
+                margin-top: 15vw;
+                width: 100%;
+                gap: 25vw;
+                align-items: center;
+            }
+
+            span {
+                display: inline-block;
+                will-change: transform, opacity;
+            }
+
+            h1 {
+                font-size: 2.5vw;
+                line-height: 3.3vw;
+                margin-bottom: 1vw;
+                color: #F2FFC4;
+                overflow: hidden;
+
+                @media (max-width: 768px) {
+                    font-size: 7vw;
+                    line-height: 7.5vw;
+                    width: 100%;
+                }
+            }
+
+            p {
+                font-size: 1.1vw;
+                line-height: 1.8vw;
+                color: #fff;
+                width: 60%;
+                overflow: hidden;
+
+                @media (max-width: 768px) {
+                    display: flex;
+                    flex-direction: column;
+                    font-size: 4vw;
+                    line-height: 5vw;
+                    text-align: right;
+                    align-self: flex-end;
+                    width: 80%;
+                }
+            }
+
+            button {
+                border: 1px solid #c6ff4f;
+                background-color: transparent;
+                color: #fff;
+                padding: 1vw 2vw;
+                border-radius: 1vw;
+                margin-top: 1vw;
+                font-weight: bold;
+                font-size: 1vw;
+                cursor: pointer;
+                transition: all ease 0.5s;
+
+                @media (max-width: 768px) {
+                    padding: 4vw 6vw;
+                    font-size: 2.5vw;
+                }
+
+                &:hover {
+                    background-color: #c6ff4f;
+                    color: #000;
+                }
+            }
+        }
+    }
+}

@@ -6,7 +6,7 @@
   justify-content: space-between;
   padding: 0 2vw;
 
-  @media (max-width: 416px) {
+  @media (max-width: 768px) {
     padding: 4vw 3vw;
     height: 20vw;
   }
@@ -15,7 +15,7 @@
     font-size: 1.4vw;
     font-family: Wall;
 
-    @media (max-width: 416px) {
+    @media (max-width: 768px) {
       font-size: 4vw;
       display: none;
     }
@@ -24,7 +24,7 @@
   img {
     display: none;
 
-    @media (max-width: 416px) {
+    @media (max-width: 768px) {
       display: block;
       width: 12vw;
       height: 12vw;
@@ -80,7 +80,7 @@
         transform: translateY(0);
       }
 
-      @media (max-width: 416px) {
+      @media (max-width: 768px) {
         display: none;
       }
     }
@@ -90,7 +90,7 @@
     display: none;
     position: relative;
 
-    @media (max-width: 416px) {
+    @media (max-width: 768px) {
       display: block;
     }
   }
@@ -99,7 +99,7 @@
     display: none;
   }
 
-  @media (max-width: 416px) {
+  @media (max-width: 768px) {
     .dropdownMenu {
       position: absolute;
       top: 70%;
@@ -137,7 +137,7 @@
     transition: all 0.3s ease;
     cursor: pointer;
 
-    @media (max-width: 416px) {
+    @media (max-width: 768px) {
       padding: 2.3vw 4vw;
       font-size: 2.5vw;
     }
