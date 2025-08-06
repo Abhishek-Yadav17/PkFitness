@@ -77,7 +77,7 @@ export default function HeroSection() {
             <div className={styles.hero}>
                 <div className={styles.tagline}>
                     <h1>
-                        <span>Your Goals Aren&apos;t Out of Reach—</span><br />
+                        <span>Your Goals Aren&apos;t Out of Reach</span><br />
                         <span>You Just Haven&apos;t Trained Here Yet.</span><br />
                         <span>This is Where Your Stronger Self Begins.</span>
                     </h1>
@@ -87,7 +87,7 @@ export default function HeroSection() {
                         <span>community committed to real, lasting results.</span>
                     </p>
                     <Link href="/contact">
-                        <button>Start your journey today.</button>
+                        <button>Start your journey today</button>
                     </Link>
                 </div>
             </div>

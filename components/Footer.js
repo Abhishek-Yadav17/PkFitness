@@ -30,7 +30,7 @@ export default function Footer() {
             <h4 onClick={() => handleReloadNavigate('/aboutus')}>About Us</h4>
           </div>
           <div className={styles.socialMedia}>
-            <h2>Socail Media</h2>
+            <h2>Social Media</h2>
             <h4 onClick={() => window.open('https://www.instagram.com/pkfitnessandnutritions?igsh=MTN1Z2c4NGRrMGh2NQ%3D%3D&utm_source=qr', '_blank')}>Instagram</h4>
             <h4>LinkedIn</h4>
             <h4>Facebook</h4>
