@@ -67,7 +67,7 @@ export default function Navbar() {
           <Link href="/" passHref>
             <h4 onClick={() => setMenuOpen(false)}>Homepage</h4>
           </Link>
-          <h4 style={{ cursor: 'pointer' }} onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}>Services</h4>
+          <h4 style={{ cursor: 'pointer' }} onClick={goToServices}>Services</h4>
           <Link href='/aboutus' passHref>
             <h4 onClick={() => setMenuOpen(false)}>About Us</h4>
           </Link>
